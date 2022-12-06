@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/vue/login",
+      redirect: "/blanken/main",
     },
   ],
 });

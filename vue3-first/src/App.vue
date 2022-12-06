@@ -1,13 +1,18 @@
 <template>
-  <Main/>
+  <div>
+    <Nav/>
+    <Main/>
+  </div>
 </template>
 
 <script>
-import Main from './views/Main.vue'
+import Nav from './components/Header.vue';
+import Main from './views/Main.vue';
 
 export default {
   name: 'App',
   components: {
+    Nav,
     Main
   }
 }
