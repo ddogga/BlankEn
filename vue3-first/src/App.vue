@@ -2,18 +2,21 @@
   <div>
     <Nav/>
     <Main/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Nav from './components/Header.vue';
+import Footer from './components/Footer.vue';
 import Main from './views/Main.vue';
 
 export default {
   name: 'App',
   components: {
     Nav,
-    Main
+    Main,
+    Footer
   }
 }
 </script>
