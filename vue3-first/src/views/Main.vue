@@ -37,8 +37,8 @@
                 <!-- Product actions-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
-                    <a class="btn btn-outline-dark mt-auto" href="#"
-                        >View options</a
+                    <router-link class="btn btn-outline-dark mt-auto" to="/blanken/test"
+                        >Test</router-link
                     >
                     </div>
                 </div>
@@ -320,3 +320,11 @@
     </div>
 </template>
 
+<script>
+
+export default {
+    setup() {
+        
+    },
+}
+</script>
