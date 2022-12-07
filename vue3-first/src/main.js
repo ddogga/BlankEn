@@ -7,5 +7,6 @@ import router from "./router/index.js";
 // ==================================================
 
 import "@/assets/css/main.css";
+import "@/assets/js/scripts.js";
 
 createApp(App).use(router).mount("#app");
