@@ -17,7 +17,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#!">퀴즈 풀기</a>
+                    <router-link class="nav-link active" aria-current="page" to="/blanken/boardlist">
+                        퀴즈 풀기
+                    </router-link>
                 </li>
             </ul>
             <form class="d-flex">

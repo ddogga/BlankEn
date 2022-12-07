@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Main from "../views/Main.vue";
-import Test from "../views/Test.vue";
+import BoardList from "../views/board/BoardList.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,9 +15,9 @@ const router = createRouter({
       component: Main,
     },
     {
-      path: "/blanken/test",
-      name: "Test",
-      component: Test,
+      path: "/blanken/boardlist",
+      name: "BoardList",
+      component: BoardList,
     },
   ],
 });
