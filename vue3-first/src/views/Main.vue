@@ -320,7 +320,7 @@
     </div>
 </template>
 
-<script>
+<script scoped>
 
 export default {
     setup() {
@@ -328,3 +328,7 @@ export default {
     },
 }
 </script>
+
+<style>
+@import "../assets/css/main.css";
+</style>
