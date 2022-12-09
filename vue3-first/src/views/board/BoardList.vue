@@ -9,16 +9,21 @@
                         Dropdown button
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><input type="checkbox" id="a1" name="md" />
+                        <label for="a1"><span>미드</span></label>
+                        </li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </div>
             </div>
 
+            
+
             <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
             >
+
 
             </div>
             <div
@@ -119,6 +124,7 @@
 <style scoped>
 /* @import "../../assets/css/bootstrap.css"; */
 
+/*table css */
 table {
     width: 700px;
     text-align: center;
@@ -168,4 +174,17 @@ img {
     padding: 0;
     border-bottom: 3px solid #009688;
 }
+
+/* dropbox css */
+.dropdown-menu {margin-top: 10px;}
+.dropdown-menu li {margin-bottom: 15px;}
+.dropdown-menu li:after {display:block; clear:both; content:"";}
+.dropdown-menu li input[type="checkbox"] {display: none;}
+.dropdown-menu li input[type="checkbox"] + label { width:17px; height: 17px; background: #fa3062; cursor: pointer; border-radius: 3px;float: right;}
+.dropdown-menu li input[type="checkbox"]:checked + label {background:url(../../assets/images/check.png) #fa3062 no-repeat center/10px 10px; float: right}
+.dropdown-menu li input[type="checkbox"] + label span {position: absolute; left:0px; display: block; }
+
+
+
+
 </style>
