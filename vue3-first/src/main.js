@@ -8,5 +8,6 @@ import router from "./router/index.js";
 
 import "@/assets/css/main.css";
 import "@/assets/js/scripts.js";
+import "@/assets/js/multiselect-dropdown.js";
 
 createApp(App).use(router).mount("#app");

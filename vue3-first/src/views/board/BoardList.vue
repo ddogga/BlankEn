@@ -8,24 +8,35 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown button
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><input type="checkbox" id="a1" name="md" />
-                        <label for="a1"><span>미드</span></label>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <ul class="dropdown-menu" v-on:click.stop="doThis">
+                        <li class="dropdown-item"><input type="checkbox"><label>a</label></li>
+                        <li class="dropdown-item"><input type="checkbox"><label>w</label></li>
+                        <li class="dropdown-item"><input type="checkbox"><label>e</label></li>
+                        <li class="dropdown-item"><input type="checkbox"><label>r</label></li>
+                        <li class="dropdown-item"><input type="checkbox"><label>s</label></li>
                     </ul>
                 </div>
             </div>
 
-            
-
             <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
             >
-
-
+                <select name="cars" id="cars" multiple multiselect-hide-x="true">
+                    <option value="1">Audi</option>
+                    <option selected value="2">BMW</option>
+                    <option selected value="3">Mercedes</option>
+                    <option value="4">Volvo</option>
+                    <option value="5">Lexus</option>
+                    <option value="6">Tesla</option>
+                </select>
+            
+            
             </div>
+            
+
+
+
+
             <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
             >
@@ -120,6 +131,16 @@
         </section>
 </template>
 
+<script>
+
+    export default {
+        setup() {
+
+        },
+    }
+</script>
+
+
 
 <style scoped>
 /* @import "../../assets/css/bootstrap.css"; */
@@ -176,13 +197,12 @@ img {
 }
 
 /* dropbox css */
-.dropdown-menu {margin-top: 10px;}
+/* .dropdown-menu {margin-top: 10px;}
 .dropdown-menu li {margin-bottom: 15px;}
-.dropdown-menu li:after {display:block; clear:both; content:"";}
 .dropdown-menu li input[type="checkbox"] {display: none;}
 .dropdown-menu li input[type="checkbox"] + label { width:17px; height: 17px; background: #fa3062; cursor: pointer; border-radius: 3px;float: right;}
 .dropdown-menu li input[type="checkbox"]:checked + label {background:url(../../assets/images/check.png) #fa3062 no-repeat center/10px 10px; float: right}
-.dropdown-menu li input[type="checkbox"] + label span {position: absolute; left:0px; display: block; }
+.dropdown-menu li input[type="checkbox"] + label span {position: absolute; left:0px; display: block; } */
 
 
 
