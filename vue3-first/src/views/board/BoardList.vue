@@ -45,7 +45,7 @@
                     <thead>
                         <tr>
                             <th>상태</th>
-                            <th>제목</th>
+                            <th colspan="2">제목</th>
                             <th>문제수</th>
                             <th>카테고리</th>
                             <th>추천수</th>
@@ -53,73 +53,114 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><sapn
+                            <td rowspan="2"><sapn
                             class="badge bg-success text-white"
                             >완료</sapn></td>
-                            <td>Ninja</td>
-                            <td>Asma Ad</td>
-                            <td>120</td>
-                            <td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><sapn
+                            <td>아이디</td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="2"><sapn
                             class="badge bg-secondary text-white"
                             >진행중</sapn></td>
-                            <td>Shades</td>
-                            <td>David</td>
-                            <td>180</td>
-                            <td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><sapn class="badge"></sapn></td>
-                            <td>Alex</td>
-                            <td>David</td>
-                            <td>160</td>
-                            <td>
+                            <td>아이디</td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="2"><sapn
+                            class="badge bg-secondary text-white"
+                            >진행중</sapn></td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><sapn class="badge"></sapn></td>
-                            <td>Valhala</td>
-                            <td> Kawtar</td>
-                            <td>190</td>
-                            <td>
+                            <td>아이디</td>
+                        </tr>
+
+                                                <tr>
+                            <td rowspan="2"><sapn
+                            class="badge bg-secondary text-white"
+                            >진행중</sapn></td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><sapn class="badge"></sapn></td>
-                            <td>Katara</td>
-                            <td>David</td>
-                            <td>110</td>
-                            <td>
+                            <td>아이디</td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="2"><sapn
+                            class="badge bg-secondary text-white"
+                            >진행중</sapn></td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><sapn class="badge bg-secondary text-white">진행중</sapn></td>
-                            <td>Union</td>
-                            <td>Ashraf</td>
-                            <td>90</td>
-                            <td>
+                            <td>아이디</td>
+                        </tr>
+
+                                                <tr>
+                            <td rowspan="2"><sapn
+                            class="badge bg-secondary text-white"
+                            >진행중</sapn></td>
+                            <td>제목</td>
+                            <td rowspan="2">버튼</td>
+                            <td rowspan="2">David</td>
+                            <td rowspan="2">180</td>
+                            <td rowspan="2">
                                 <button class="view">view</button>
                                 <button class="delete">Delete</button>
                             </td>
+                        </tr>
+
+                        <tr>
+                            <td>아이디</td>
                         </tr>
                     </tbody>
                     <tfoot>
