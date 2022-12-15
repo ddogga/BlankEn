@@ -9,11 +9,12 @@
                         Dropdown button
                     </button>
                     <ul class="dropdown-menu" v-on:click.stop="doThis">
-                        <li class="dropdown-item"><input type="checkbox"><label>a</label></li>
-                        <li class="dropdown-item"><input type="checkbox"><label>w</label></li>
-                        <li class="dropdown-item"><input type="checkbox"><label>e</label></li>
-                        <li class="dropdown-item"><input type="checkbox"><label>r</label></li>
-                        <li class="dropdown-item"><input type="checkbox"><label>s</label></li>
+                        <li class="dropdown-item"><label>모두<input type="checkbox" v-model="selectAll" value="all" @change="all"></label></li>
+                        <li class="dropdown-item"><label>드라마<input type="checkbox" v-model="selectedValues" value="드라마"></label></li>
+                        <li class="dropdown-item"><label>여행<input type="checkbox" v-model="selectedValues" value="여행"></label></li>
+                        <li class="dropdown-item"><label>일상회화<input type="checkbox" v-model="selectedValues" value="일상회화"></label></li>
+                        <li class="dropdown-item"><label>비즈니스<input type="checkbox" v-model="selectedValues" value="비즈니스"></label></li>
+                        <li class="dropdown-item"><label>오픽/토스<input type="checkbox" v-model="selectedValues" value="오픽/토스"></label></li>
                     </ul>
                 </div>
             </div>
@@ -21,21 +22,16 @@
             <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
             >
-                <select name="cars" id="cars" multiple multiselect-hide-x="true">
-                    <option value="1">Audi</option>
-                    <option selected value="2">BMW</option>
-                    <option selected value="3">Mercedes</option>
-                    <option value="4">Volvo</option>
-                    <option value="5">Lexus</option>
-                    <option value="6">Tesla</option>
-                </select>
-            
-            
+                <ul class="tag-list">
+                    <li class="tag-item" v-for="(item,index) in selectedValues" :key="index">
+                        <sapn class="badge bg-success text-white tag" >
+                            {{item}}
+                        </sapn>
+                    </li>
+                </ul>
+                
             </div>
             
-
-
-
 
             <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
@@ -173,10 +169,26 @@
 </template>
 
 <script>
-
+    import {ref} from 'vue';
     export default {
         setup() {
 
+            const selectAll = ref(false);
+            const selectedValues = ref([])
+
+
+            //카테고리 전체 선택
+            const all = () =>{
+                if(selectAll.value){
+                    selectedValues.value = ["드라마","여행","일상회화","비즈니스","오픽/토스"]
+                } else{
+                    selectedValues.value = [];
+                }
+            }
+
+            return{
+                selectAll,selectedValues,all
+            }
         },
     }
 </script>
@@ -185,6 +197,18 @@
 
 <style scoped>
 /* @import "../../assets/css/bootstrap.css"; */
+
+
+/*검색 태그 */
+
+.tag-list {
+    list-style: none;
+}
+.tag-item {
+    float: left;
+    margin-right: 20px;
+}
+
 
 /*table css */
 table {
