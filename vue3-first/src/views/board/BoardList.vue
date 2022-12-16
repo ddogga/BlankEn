@@ -80,8 +80,14 @@
               v-for="(item, index) in selectedValues"
               :key="index"
             >
-              <sapn class="badge bg-success text-white tag">
+              <sapn class="badge bg-info text-white tag">
                 {{ item }}
+                <a
+                  v-on:click="deleteTag(index)"
+                  style="text-decoration: none"
+                  href="#"
+                  >x</a
+                >
               </sapn>
             </li>
           </ul>
@@ -268,12 +274,21 @@ export default {
       sortValue.value = value;
     };
 
+    const deleteTag = (index) => {
+      selectedValues.value.splice(index, 1);
+      if (selectedValues.value.length == 0) {
+        console.log("텅");
+        selectAll.value = false;
+      }
+    };
+
     return {
       selectAll,
       selectedValues,
       all,
       sortValue,
       sortState,
+      deleteTag,
     };
   },
 };
