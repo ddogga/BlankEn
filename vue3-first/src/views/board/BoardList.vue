@@ -69,20 +69,23 @@
       </div>
 
       <!-- 검색 태그 -->
+
       <div
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
       >
-        <ul class="tag-list">
-          <li
-            class="tag-item"
-            v-for="(item, index) in selectedValues"
-            :key="index"
-          >
-            <sapn class="badge bg-success text-white tag">
-              {{ item }}
-            </sapn>
-          </li>
-        </ul>
+        <div class="container gx-4 px-lg-5" style="width: 1000px">
+          <ul class="tag-list me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li
+              class="tag-item"
+              v-for="(item, index) in selectedValues"
+              :key="index"
+            >
+              <sapn class="badge bg-success text-white tag">
+                {{ item }}
+              </sapn>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <nav class="navbar navbar-expand-lg">
@@ -99,11 +102,25 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >최신순</a
+                >{{ sortValue }}</a
               >
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">추천순</a></li>
-                <li><a class="dropdown-item" href="#!">최신순</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    v-on:click="sortState('추천순')"
+                    href="#!"
+                    >추천순</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    v-on:click="sortState('최신순')"
+                    href="#!"
+                    >최신순</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -247,10 +264,16 @@ export default {
       }
     };
 
+    const sortState = (value) => {
+      sortValue.value = value;
+    };
+
     return {
       selectAll,
       selectedValues,
       all,
+      sortValue,
+      sortState,
     };
   },
 };
