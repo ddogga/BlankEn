@@ -65,5 +65,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/pagination.scss";
+@import "../../assets/css/pagination.scss";
 </style>
