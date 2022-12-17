@@ -16,53 +16,59 @@
           </button>
           <ul class="dropdown-menu" v-on:click.stop="doThis">
             <li class="dropdown-item">
-              <label
-                >모두<input
-                  type="checkbox"
-                  v-model="selectAll"
-                  value="all"
-                  @change="all"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectAll"
+                value="all"
+                @change="all"
+                class="category-checkbox"
+              />
+              <label>모두</label>
             </li>
             <li class="dropdown-item">
-              <label
-                >드라마<input
-                  type="checkbox"
-                  v-model="selectedValues"
-                  value="드라마"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectedValues"
+                value="드라마"
+                class="category-checkbox"
+              />
+              <label>드라마</label>
             </li>
             <li class="dropdown-item">
-              <label
-                >여행<input
-                  type="checkbox"
-                  v-model="selectedValues"
-                  value="여행"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectedValues"
+                value="여행"
+                class="category-checkbox"
+              />
+              <label>여행</label>
             </li>
             <li class="dropdown-item">
-              <label
-                >일상회화<input
-                  type="checkbox"
-                  v-model="selectedValues"
-                  value="일상회화"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectedValues"
+                value="일상회화"
+                class="category-checkbox"
+              />
+              <label>일상회화</label>
             </li>
             <li class="dropdown-item">
-              <label
-                >비즈니스<input
-                  type="checkbox"
-                  v-model="selectedValues"
-                  value="비즈니스"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectedValues"
+                value="비즈니스"
+                class="category-checkbox"
+              />
+              <label>비즈니스</label>
             </li>
             <li class="dropdown-item">
-              <label
-                >오픽/토스<input
-                  type="checkbox"
-                  v-model="selectedValues"
-                  value="오픽/토스"
-              /></label>
+              <input
+                type="checkbox"
+                v-model="selectedValues"
+                value="오픽/토스"
+                class="category-checkbox"
+              />
+              <label>오픽/토스</label>
             </li>
           </ul>
         </div>
@@ -152,7 +158,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-success text-white">완료</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">
                 <button class="btn-primary btn-sm">단어목록</button>
               </td>
@@ -177,7 +183,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-secondary text-white">진행중</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -200,7 +206,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-secondary text-white">진행중</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -215,7 +221,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-secondary text-white">진행중</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -230,7 +236,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-secondary text-white">진행중</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -245,7 +251,7 @@
               <td rowspan="2">
                 <sapn class="badge bg-secondary text-white">진행중</sapn>
               </td>
-              <td>제목</td>
+              <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -258,13 +264,21 @@
           </tbody>
         </table>
       </div>
+
+      <Pagination />
     </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
+
+import Pagination from "../../components/Pagination.vue";
 export default {
+  components: {
+    Pagination,
+  },
+
   setup() {
     const selectAll = ref(false);
     const selectedValues = ref([]);
@@ -310,8 +324,6 @@ export default {
 </script>
 
 <style scoped>
-/* @import "../../assets/css/bootstrap.css"; */
-
 /*검색 태그 */
 
 .tag-list {
@@ -322,11 +334,15 @@ export default {
   margin-right: 20px;
 }
 
+.category-checkbox {
+  margin-right: 5px;
+}
+
 /*table css */
 table {
   width: 1000px;
   text-align: center;
-  border: 1px solid #fff;
+  border: 1px solid rgb(255, 255, 255);
   border-spacing: 1px;
   font-family: "Cairo", sans-serif;
   margin: auto;
@@ -338,20 +354,13 @@ caption {
 
 table td {
   padding: 10px;
-  background-color: #eee;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(197, 197, 197);
 }
 
 table th {
   background-color: #333;
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 10px;
 }
-
-/* dropbox css */
-/* .dropdown-menu {margin-top: 10px;}
-.dropdown-menu li {margin-bottom: 15px;}
-.dropdown-menu li input[type="checkbox"] {display: none;}
-.dropdown-menu li input[type="checkbox"] + label { width:17px; height: 17px; background: #fa3062; cursor: pointer; border-radius: 3px;float: right;}
-.dropdown-menu li input[type="checkbox"]:checked + label {background:url(../../assets/images/check.png) #fa3062 no-repeat center/10px 10px; float: right}
-.dropdown-menu li input[type="checkbox"] + label span {position: absolute; left:0px; display: block; } */
 </style>
