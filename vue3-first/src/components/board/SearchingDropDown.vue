@@ -108,7 +108,6 @@ export default {
   setup() {
     const selectAll = ref(false);
     const selectedValues = ref([]);
-    const sortValue = ref("최신순");
 
     //카테고리 전체 선택
     const all = () => {
@@ -125,10 +124,6 @@ export default {
       }
     };
 
-    const sortState = (value) => {
-      sortValue.value = value;
-    };
-
     const deleteTag = (index) => {
       selectedValues.value.splice(index, 1);
       if (selectedValues.value.length == 0) {
@@ -141,8 +136,6 @@ export default {
       selectAll,
       selectedValues,
       all,
-      sortValue,
-      sortState,
       deleteTag,
     };
   },

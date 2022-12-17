@@ -63,7 +63,9 @@
               </td>
               <td style="border-bottom: none">제목</td>
               <td rowspan="2">
-                <button class="btn-primary btn-sm">단어목록</button>
+                <button class="btn-primary btn-sm" @click="openPopup">
+                  문장목록
+                </button>
               </td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
@@ -168,6 +170,12 @@
         </table>
       </div>
 
+      <div class="popup-view popup-background" :class="{ active: popupView }">
+        <div class="popup-window">
+          <pop-up class="pop-up" @close-popup="openPopup"></pop-up>
+        </div>
+      </div>
+
       <Pagination />
     </div>
   </section>
@@ -178,13 +186,33 @@ import { ref } from "vue";
 
 import Pagination from "../../components/board/Pagination.vue";
 import DropDown from "../../components/board/SearchingDropDown.vue";
+import PopUp from "../../components/board/PopUp.vue";
 export default {
   components: {
     Pagination,
     DropDown,
+    PopUp,
   },
 
-  setup() {},
+  setup() {
+    const sortValue = ref("최신순");
+    const popupView = ref(false);
+
+    const sortState = (value) => {
+      sortValue.value = value;
+    };
+
+    const openPopup = () => {
+      popupView.value = popupView.value ? false : true;
+    };
+
+    return {
+      sortValue,
+      sortState,
+      popupView,
+      openPopup,
+    };
+  },
 };
 </script>
 
@@ -213,5 +241,50 @@ table th {
   background-color: #333;
   color: rgb(255, 255, 255);
   padding: 10px;
+}
+
+/* POPUP */
+
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.popup-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+
+  /* 임시 지정 */
+  width: 500px;
+  height: 500px;
+
+  /* 초기에 약간 아래에 배치 */
+  transform: translate(-50%, -40%);
+}
+
+.popup-view {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+.active {
+  opacity: 1;
+  display: block;
+  visibility: visible;
 }
 </style>
