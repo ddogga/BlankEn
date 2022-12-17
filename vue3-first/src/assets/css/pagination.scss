@@ -40,6 +40,7 @@
 .pagination\:number {
   --size: 32px;
   --margin: 6px;
+  color: #f3f3f3;
   margin: 0 var(--margin);
   border-radius: 6px;
   background: #202020;
@@ -51,17 +52,13 @@
   justify-content: center;
   cursor: pointer;
   padding: 0 6px;
-  @media (hover: hover) {
-    &:hover {
-      background: lighten(#202020, 3%);
-    }
-  }
-  &:active {
-    background: lighten(#202020, 3%);
-  }
 }
 
 .pagination\:active {
-  background: lighten(#202020, 3%);
+  background: #535353;
   position: relative;
+}
+
+.pagination\:number:hover {
+  background: #535353;
 }
