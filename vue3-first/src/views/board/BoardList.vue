@@ -138,13 +138,10 @@
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
       >
         <table>
-          <caption>
-            Developers Rating
-          </caption>
           <thead>
             <tr>
               <th>상태</th>
-              <th colspan="2">제목</th>
+              <th colspan="2" style="width: 50%">제목</th>
               <th>문제수</th>
               <th>카테고리</th>
               <th>추천수</th>
@@ -156,14 +153,24 @@
                 <sapn class="badge bg-success text-white">완료</sapn>
               </td>
               <td>제목</td>
-              <td rowspan="2">버튼</td>
+              <td rowspan="2">
+                <button class="btn-primary btn-sm">단어목록</button>
+              </td>
               <td rowspan="2">David</td>
               <td rowspan="2">180</td>
               <td rowspan="2">number</td>
             </tr>
 
             <tr>
-              <td>아이디</td>
+              <td>
+                <img
+                  src="../../assets/images/snowball.jpg"
+                  height="30"
+                  width="30"
+                  class="rounded-circle"
+                />
+                <span>아이디</span>
+              </td>
             </tr>
 
             <tr>
@@ -178,7 +185,15 @@
             </tr>
 
             <tr>
-              <td>아이디</td>
+              <td>
+                <img
+                  src="../../assets/images/snowball.jpg"
+                  height="30"
+                  width="30"
+                  class="rounded-circle"
+                />
+                <span>아이디</span>
+              </td>
             </tr>
 
             <tr>
