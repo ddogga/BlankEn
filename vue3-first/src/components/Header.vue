@@ -31,10 +31,9 @@
             class="nav-link active"
             aria-current="page"
             to="/blanken/login"
-            ><button class="btn btn-outline-dark" type="submit">
-              로그인
-            </button></router-link
           >
+            <button class="btn btn-outline-dark" type="submit">로그인</button>
+          </router-link>
         </form>
         <div class="nav-item dropdown">
           <a

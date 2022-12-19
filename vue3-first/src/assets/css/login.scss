@@ -11,8 +11,8 @@ body {
   background: #ededed;
 }
 
-input,
-button {
+.input,
+.button {
   border: none;
   outline: none;
   background: none;
@@ -74,7 +74,7 @@ $diffRatio: ($contW - $imgW) / $contW;
   }
 }
 
-button {
+.button {
   display: block;
   margin: 0 auto;
   width: $inputW;
@@ -212,13 +212,13 @@ button {
   }
 }
 
-h2 {
+.h2 {
   width: 100%;
   font-size: 26px;
   text-align: center;
 }
 
-label {
+.label {
   display: block;
   width: $inputW;
   margin: 25px auto 0;
@@ -231,7 +231,7 @@ label {
   }
 }
 
-input {
+.input {
   display: block;
   width: 100%;
   margin-top: 5px;

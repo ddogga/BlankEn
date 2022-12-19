@@ -1,20 +1,22 @@
 <template>
   <div>
-    <p class="tip">Click on button in image container</p>
+    <p class="tip">Double click on button in image container</p>
     <div class="cont">
       <div class="form sign-in">
-        <h2>Welcome back,</h2>
-        <label>
+        <h2 class="h2">Welcome back,</h2>
+        <label class="label">
           <span>Email</span>
-          <input type="email" />
+          <input class="input" type="email" />
         </label>
-        <label>
+        <label class="label">
           <span>Password</span>
-          <input type="password" />
+          <input class="input" type="password" />
         </label>
-        <p class="forgot-pass">Forgot password?</p>
-        <button type="button" class="submit">Sign In</button>
-        <button type="button" class="fb-btn">
+        <router-link class="nav-link active" aria-current="page" to="/">
+          <p class="forgot-pass">Forgot password?</p>
+        </router-link>
+        <button type="button" class="submit button">Sign In</button>
+        <button type="button" class="fb-btn button">
           Connect with <span>facebook</span>
         </button>
 
@@ -40,11 +42,11 @@
       <div class="sub-cont">
         <div class="img">
           <div class="img__text m--up">
-            <h2>New here?</h2>
+            <h2 class="h2">New here?</h2>
             <p>Sign up and discover great amount of new opportunities!</p>
           </div>
           <div class="img__text m--in">
-            <h2>One of us?</h2>
+            <h2 class="h2">One of us?</h2>
             <p>
               If you already has an account, just sign in. We've missed you!
             </p>
@@ -55,21 +57,21 @@
           </div>
         </div>
         <div class="form sign-up">
-          <h2>Time to feel like home,</h2>
-          <label>
+          <h2 class="h2">Time to feel like home,</h2>
+          <label class="label">
             <span>Name</span>
-            <input type="text" />
+            <input class="input" type="text" />
           </label>
-          <label>
+          <label class="label">
             <span>Email</span>
-            <input type="email" />
+            <input class="input" type="email" />
           </label>
-          <label>
+          <label class="label">
             <span>Password</span>
-            <input type="password" />
+            <input class="input" type="password" />
           </label>
-          <button type="button" class="submit">Sign Up</button>
-          <button type="button" class="fb-btn">
+          <button type="button" class="submit button">Sign Up</button>
+          <button type="button" class="fb-btn button">
             Join with <span>facebook</span>
           </button>
         </div>
