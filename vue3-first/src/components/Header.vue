@@ -27,7 +27,14 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button class="btn btn-outline-dark" type="submit">로그인</button>
+          <router-link
+            class="nav-link active"
+            aria-current="page"
+            to="/blanken/login"
+            ><button class="btn btn-outline-dark" type="submit">
+              로그인
+            </button></router-link
+          >
         </form>
         <div class="nav-item dropdown">
           <a

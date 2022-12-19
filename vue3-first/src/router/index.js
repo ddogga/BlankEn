@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Main from "../views/Main.vue";
 import BoardList from "../views/board/BoardList.vue";
+import Login from "../views/member/Login.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,6 +19,11 @@ const router = createRouter({
       path: "/blanken/boardlist",
       name: "BoardList",
       component: BoardList,
+    },
+    {
+      path: "/blanken/login",
+      name: "Login",
+      component: Login,
     },
   ],
 });
