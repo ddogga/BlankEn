@@ -11,7 +11,11 @@
         </div>
       </div>
       <div class="container">
-        <router-link class="nav-link active" aria-current="page" to="/">
+        <router-link
+          class="nav-link active"
+          aria-current="page"
+          to="/blanken/quiz_write"
+        >
           <button
             style="margin: 20px; outline: none; color: white"
             class="custom-btn btn-12"
