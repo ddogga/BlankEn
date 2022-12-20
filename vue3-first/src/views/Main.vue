@@ -14,7 +14,7 @@
         <router-link
           class="nav-link active"
           aria-current="page"
-          to="/blanken/quiz_write"
+          to="/blanken/set_write"
         >
           <button
             style="margin: 20px; outline: none; color: white"

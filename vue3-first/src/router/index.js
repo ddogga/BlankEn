@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Main from "../views/Main.vue";
 import BoardList from "../views/board/BoardList.vue";
 import Login from "../views/member/Login.vue";
-import QuizWrite from "../views/board/BoardWrite.vue";
+import SetWrite from "../views/board/BoardWrite_Set.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,9 +27,9 @@ const router = createRouter({
       component: Login,
     },
     {
-      path: "/blanken/quiz_write",
-      name: "QuizWrite",
-      component: QuizWrite,
+      path: "/blanken/set_write",
+      name: "SetWrite",
+      component: SetWrite,
     },
   ],
 });
