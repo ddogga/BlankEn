@@ -59,7 +59,7 @@
           <tbody>
             <tr>
               <td rowspan="2">
-                <sapn class="badge bg-success text-white">완료</sapn>
+                <span class="badge bg-success text-white">완료</span>
               </td>
               <td style="border-bottom: none">제목</td>
               <td rowspan="2">
@@ -86,7 +86,7 @@
 
             <tr>
               <td rowspan="2">
-                <sapn class="badge bg-secondary text-white">진행중</sapn>
+                <span class="badge bg-secondary text-white">진행중</span>
               </td>
               <td style="border-bottom: none">제목</td>
               <td rowspan="2">버튼</td>

@@ -35,52 +35,64 @@
 
       <DropDown />
 
-      <div class="card w-100 h-100 container">
-        <label for="profile">
-          <span id="showImage">
-            <img
-              width="150px"
-              id="profile_img"
-              src="../../assets/images/upload_image.jpg"
-              alt="profile"
-            />
-          </span>
-          <input
-            type="file"
-            style="display: none"
-            id="profile"
-            name="profile"
-          />
-        </label>
-
-        <div class="card-body">
-          <div class="card-input form-field col-lg-4">
-            <input
-              class="input-text js-input"
-              id="name"
-              type="text"
-              placeholder="first "
-              required
-            />
+      <div class="col mb-5">
+        <div class="container card">
+          <!-- image -->
+          <div class="card-img-top">
+            <label for="profile">
+              <span id="showImage">
+                <img
+                  id="profile_img"
+                  src="../../assets/images/upload_image.jpg"
+                  alt="profile"
+                  width="150px"
+                />
+              </span>
+              <input
+                type="file"
+                style="display: none"
+                id="profile"
+                name="profile"
+              />
+            </label>
           </div>
+          <!-- input -->
+          <div card-body>
+            <div
+              class="card-input form-field col-lg-4"
+              @mouseover="show"
+              @mouseout="hide"
+            >
+              <input
+                class="input-text js-input"
+                placeholder="first "
+                required
+              />
 
-          <div class="card-input form-field col-lg-4">
-            <input
-              class="input-text js-input"
-              id="email"
-              type="email"
-              placeholder="blank"
-              required
-            />
-          </div>
-          <div class="card-input form-field col-lg-4">
-            <input
-              class="input-text js-input"
-              id="email"
-              type="email"
-              placeholder="last"
-              required
-            />
+              <img
+                class="hidden"
+                src="../../assets/images/x_white.png"
+                alt=""
+              />
+            </div>
+
+            <div class="card-input form-field col-lg-4">
+              <input class="input-text js-input" placeholder="blank" required />
+            </div>
+
+            <div
+              class="card-input form-field col-lg-4"
+              @mouseover="show"
+              @mouseout="hide"
+            >
+              <input class="input-text js-input" placeholder="last" required />
+
+              <img
+                class="hidden"
+                src="../../assets/images/x_white.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -93,17 +105,45 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 import DropDown from "../../components/board/SearchingDropDown.vue";
 export default {
   components: {
     DropDown,
   },
-  setup() {},
+  setup() {
+    const show = (e) => {
+      e.currentTarget.children[1].className = "active";
+    };
+
+    const hide = (e) => {
+      e.currentTarget.children[1].className = "hidden";
+    };
+
+    return {
+      show,
+      hide,
+    };
+  },
 };
 </script>
 
 <style scoped>
 @import "../../assets/css/write.css";
+
+.active {
+  margin-top: 5px;
+  width: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  margin-top: 5%;
+}
 
 .card-input {
   display: inline-block;
