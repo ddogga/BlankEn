@@ -37,6 +37,17 @@
 
       <div class="col mb-5">
         <div class="container card">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container gx-4 px-lg-5"></div>
+            <div>
+              <img
+                class="close-image"
+                src="../../assets/images/x_button.png"
+                alt=""
+                @click="closePopup"
+              />
+            </div>
+          </nav>
           <!-- image -->
           <div class="card-img-top">
             <label for="profile">
@@ -147,5 +158,11 @@ export default {
 
 .card-input {
   display: inline-block;
+}
+
+.close-image {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
 }
 </style>

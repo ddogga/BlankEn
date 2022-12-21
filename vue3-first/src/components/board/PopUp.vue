@@ -5,7 +5,7 @@
       <div>
         <img
           class="close-image"
-          src="../../assets/images/error.png"
+          src="../../assets/images/x_button.png"
           alt=""
           @click="closePopup"
         />
@@ -58,9 +58,9 @@ export default {
 
 <style scoped>
 .close-image {
-  width: 40px;
-  height: 40px;
-  margin-top: 30px;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
 }
 
 body {
