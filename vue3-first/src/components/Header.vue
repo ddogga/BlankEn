@@ -35,6 +35,14 @@
             <button class="btn btn-outline-dark" type="submit">로그인</button>
           </router-link>
         </form>
+        <div>
+          <img
+            src="../assets/images/snowball.jpg"
+            height="30"
+            width="30"
+            class="rounded-circle"
+          />
+        </div>
         <div class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -46,10 +54,22 @@
             >ID</a
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#!">All Products</a></li>
+            <li>
+              <router-link class="dropdown-item" to="/blanken/login"
+                >프로필</router-link
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+            <li>
+              <router-link class="dropdown-item" to="/blanken/login"
+                >비밀번호 변경</router-link
+              >
+            </li>
+            <li>
+              <router-link class="dropdown-item" to="/blanken/login"
+                >보관함</router-link
+              >
+            </li>
           </ul>
         </div>
       </div>
