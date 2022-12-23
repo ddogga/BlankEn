@@ -1,17 +1,27 @@
 <template>
   <section class="get-in-touch">
     <h1 class="title">Make QuizSet</h1>
+
     <form class="contact-form row">
       <label for="profile">
-        <span id="showImage">
+        <span v-if="preview == ''">
           <img
-            width="300px"
             id="profile_img"
             src="../../assets/images/upload_image.jpg"
             alt="profile"
           />
         </span>
-        <input type="file" style="display: none" id="profile" name="profile" />
+        <span v-if="preview != ''">
+          <img :src="preview" />
+        </span>
+
+        <input
+          type="file"
+          style="display: none"
+          id="profile"
+          @change="onFileSelected"
+        />
+        <!-- <v-file-input v-model="file" @change="previewFile(file)" name="profile" /> -->
       </label>
 
       <div class="form-field col-lg-6">
@@ -48,24 +58,9 @@
               />
             </div>
           </nav>
-          <!-- image -->
+
           <div class="card-img-top">
-            <label for="profile">
-              <span id="showImage">
-                <img
-                  id="profile_img"
-                  src="../../assets/images/upload_image.jpg"
-                  alt="profile"
-                  width="150px"
-                />
-              </span>
-              <input
-                type="file"
-                style="display: none"
-                id="profile"
-                name="profile"
-              />
-            </label>
+            <div></div>
           </div>
           <!-- input -->
           <div card-body>
@@ -124,6 +119,20 @@ export default {
     DropDown,
   },
   setup() {
+    const preview = ref("");
+
+    const onFileSelected = (event) => {
+      var input = event.target;
+      console.log(input.files);
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          preview.value = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    };
+
     const show = (e) => {
       e.currentTarget.children[1].className = "active";
     };
@@ -133,8 +142,10 @@ export default {
     };
 
     return {
+      preview,
       show,
       hide,
+      onFileSelected,
     };
   },
 };
@@ -164,5 +175,9 @@ export default {
   width: 30px;
   height: 30px;
   margin-top: 15px;
+}
+
+img {
+  width: 300px;
 }
 </style>
