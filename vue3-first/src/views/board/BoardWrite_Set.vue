@@ -63,9 +63,9 @@
             <div></div>
           </div>
           <!-- input -->
-          <div card-body>
+          <div class="card-body">
             <div
-              class="card-input form-field"
+              class="card-input form-field row-cols-lg-auto"
               @mouseover="show"
               @mouseout="hide"
             >
@@ -84,7 +84,7 @@
               />
             </div>
 
-            <div class="card-input form-field">
+            <div class="card-input form-field row-cols-lg-auto">
               <input
                 v-model="card.blank"
                 class="input-text js-input"
@@ -94,7 +94,7 @@
             </div>
 
             <div
-              class="card-input form-field"
+              class="card-input form-field row-cols-lg-auto"
               @mouseover="show"
               @mouseout="hide"
             >
@@ -196,12 +196,16 @@ export default {
   display: none !important;
 }
 
+.card-body {
+  display: flex;
+}
+
 .card {
   margin-top: 5%;
 }
 
 .card-input {
-  display: inline-block;
+  flex: 1;
 }
 
 .close-image {
