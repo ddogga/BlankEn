@@ -65,7 +65,7 @@
           <!-- input -->
           <div card-body>
             <div
-              class="card-input form-field col-lg-4"
+              class="card-input form-field"
               @mouseover="show"
               @mouseout="hide"
             >
@@ -84,7 +84,7 @@
               />
             </div>
 
-            <div class="card-input form-field col-lg-4">
+            <div class="card-input form-field">
               <input
                 v-model="card.blank"
                 class="input-text js-input"
@@ -94,11 +94,12 @@
             </div>
 
             <div
-              class="card-input form-field col-lg-4"
+              class="card-input form-field"
               @mouseover="show"
               @mouseout="hide"
             >
               <input
+                type="textarea"
                 v-model="card.last"
                 class="input-text js-input"
                 placeholder="last"
@@ -109,6 +110,7 @@
                 class="hidden"
                 src="../../assets/images/x_white.png"
                 alt=""
+                @click="deleteInput"
               />
             </div>
           </div>
@@ -159,7 +161,7 @@ export default {
     };
 
     const deleteInput = (e) => {
-      console.log();
+      e.currentTarget.parentElement.classList.add("hidden");
     };
 
     const show = (e) => {
@@ -191,7 +193,7 @@ export default {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .card {
