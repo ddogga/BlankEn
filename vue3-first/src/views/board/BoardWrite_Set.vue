@@ -52,7 +52,7 @@
             <div class="container gx-4 px-lg-5"></div>
             <div>
               <img
-                class="close-image"
+                class="btn-hover close-image"
                 src="../../assets/images/x_button.png"
                 alt=""
               />
@@ -65,7 +65,7 @@
           <!-- input -->
           <div class="card-body">
             <div
-              class="card-input form-field row-cols-lg-auto"
+              class="card-input form-field"
               @mouseover="show"
               @mouseout="hide"
             >
@@ -77,14 +77,22 @@
               />
 
               <img
-                class="hidden"
+                class="btn-hover hidden"
                 src="../../assets/images/x_white.png"
                 alt=""
                 @click="deleteInput"
               />
             </div>
+            <span class="hidden">
+              <img
+                class="btn-hover add-image"
+                src="../../assets/images/add_icon.png"
+                alt=""
+                @click="addInput"
+              />
+            </span>
 
-            <div class="card-input form-field row-cols-lg-auto">
+            <div class="card-input form-field">
               <input
                 v-model="card.blank"
                 class="input-text js-input"
@@ -94,12 +102,11 @@
             </div>
 
             <div
-              class="card-input form-field row-cols-lg-auto"
+              class="card-input form-field"
               @mouseover="show"
               @mouseout="hide"
             >
               <input
-                type="textarea"
                 v-model="card.last"
                 class="input-text js-input"
                 placeholder="last"
@@ -107,12 +114,20 @@
               />
 
               <img
-                class="hidden"
+                class="btn-hover hidden"
                 src="../../assets/images/x_white.png"
                 alt=""
                 @click="deleteInput"
               />
             </div>
+            <span class="hidden">
+              <img
+                class="btn-hover add-image"
+                src="../../assets/images/add_icon.png"
+                alt=""
+                @click="addInput"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -162,6 +177,10 @@ export default {
 
     const deleteInput = (e) => {
       e.currentTarget.parentElement.classList.add("hidden");
+      e.currentTarget.parentElement.nextElementSibling.classList.add("active");
+      e.currentTarget.parentElement.nextElementSibling.classList.remove(
+        "hidden"
+      );
     };
 
     const show = (e) => {
@@ -214,8 +233,19 @@ export default {
   margin-top: 15px;
 }
 
+.add-image {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+}
+
 .profile_img {
   width: 300px;
   height: 300px;
+}
+
+.btn-hover:hover {
+  background: #e0e5ec;
+  color: #e0e5ec;
 }
 </style>
