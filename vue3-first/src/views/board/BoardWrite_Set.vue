@@ -20,8 +20,8 @@
           style="display: none"
           id="profile"
           @change="onFileSelected"
+          accept="image/*"
         />
-        <!-- <v-file-input v-model="file" @change="previewFile(file)" name="profile" /> -->
       </label>
 
       <div class="form-field col-lg-6">
@@ -45,8 +45,9 @@
 
       <DropDown />
 
-      <div class="col mb-5">
-        <div class="container card">
+      <!-- card - list-->
+      <div class="col mb-5" id="card-row">
+        <div class="container card" v-for="card in cards" :key="card">
           <nav class="navbar navbar-expand-lg">
             <div class="container gx-4 px-lg-5"></div>
             <div>
@@ -54,7 +55,6 @@
                 class="close-image"
                 src="../../assets/images/x_button.png"
                 alt=""
-                @click="closePopup"
               />
             </div>
           </nav>
@@ -70,6 +70,7 @@
               @mouseout="hide"
             >
               <input
+                v-model="card.first"
                 class="input-text js-input"
                 placeholder="first "
                 required
@@ -79,11 +80,17 @@
                 class="hidden"
                 src="../../assets/images/x_white.png"
                 alt=""
+                @click="deleteInput"
               />
             </div>
 
             <div class="card-input form-field col-lg-4">
-              <input class="input-text js-input" placeholder="blank" required />
+              <input
+                v-model="card.blank"
+                class="input-text js-input"
+                placeholder="blank"
+                required
+              />
             </div>
 
             <div
@@ -91,7 +98,12 @@
               @mouseover="show"
               @mouseout="hide"
             >
-              <input class="input-text js-input" placeholder="last" required />
+              <input
+                v-model="card.last"
+                class="input-text js-input"
+                placeholder="last"
+                required
+              />
 
               <img
                 class="hidden"
@@ -121,6 +133,19 @@ export default {
   setup() {
     const preview = ref("");
 
+    let cards = [
+      {
+        first: "",
+        black: "",
+        last: "",
+      },
+      {
+        first: "nala",
+        black: "lala",
+        last: "re",
+      },
+    ];
+
     const onFileSelected = (event) => {
       var input = event.target;
       console.log(input.files);
@@ -133,6 +158,10 @@ export default {
       }
     };
 
+    const deleteInput = (e) => {
+      console.log();
+    };
+
     const show = (e) => {
       e.currentTarget.children[1].className = "active";
     };
@@ -143,9 +172,11 @@ export default {
 
     return {
       preview,
+      cards,
       show,
       hide,
       onFileSelected,
+      deleteInput,
     };
   },
 };
