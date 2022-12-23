@@ -6,13 +6,13 @@
       <label for="profile">
         <span v-if="preview == ''">
           <img
-            id="profile_img"
+            class="profile_img"
             src="../../assets/images/upload_image.jpg"
             alt="profile"
           />
         </span>
         <span v-if="preview != ''">
-          <img :src="preview" />
+          <img class="profile_img" :src="preview" />
         </span>
 
         <input
@@ -177,7 +177,8 @@ export default {
   margin-top: 15px;
 }
 
-img {
+.profile_img {
   width: 300px;
+  height: 300px;
 }
 </style>
