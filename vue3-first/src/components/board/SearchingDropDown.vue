@@ -88,7 +88,7 @@
             <sapn class="badge bg-info text-white tag">
               {{ item }}
               <a
-                v-on:click="deleteTag(index)"
+                v-on:click="deleteTag(index, $event)"
                 style="text-decoration: none"
                 href="#"
                 >x</a
@@ -124,7 +124,8 @@ export default {
       }
     };
 
-    const deleteTag = (index) => {
+    const deleteTag = (index, event) => {
+      event.preventDefault();
       selectedValues.value.splice(index, 1);
       if (selectedValues.value.length == 0) {
         console.log("텅");
