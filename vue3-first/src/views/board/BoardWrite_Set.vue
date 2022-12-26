@@ -47,7 +47,7 @@
 
       <!-- card - list-->
       <div class="col mb-5" id="card-row">
-        <div class="container card" v-for="card in cards" :key="card">
+        <div class="container card" v-for="(card, index) in cards" :key="index">
           <nav class="navbar navbar-expand-lg">
             <div class="container gx-4 px-lg-5"></div>
             <div>
@@ -55,6 +55,7 @@
                 class="btn-hover close-image"
                 src="../../assets/images/x_button.png"
                 alt=""
+                @click="deleteCard(index)"
               />
             </div>
           </nav>
@@ -142,7 +143,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
 import DropDown from "../../components/board/SearchingDropDown.vue";
 export default {
@@ -152,7 +153,7 @@ export default {
   setup() {
     const preview = ref("");
 
-    let cards = [
+    let cards = ref([
       {
         first: "",
         black: "",
@@ -163,7 +164,15 @@ export default {
         black: "lala",
         last: "re",
       },
-    ];
+    ]);
+
+    const deleteCard = (index) => {
+      if (cards.value.length <= 1) {
+        alert("최소 하나의 카드는 있어야 합니다.");
+        return;
+      }
+      cards.value.splice(index, 1);
+    };
 
     const onFileSelected = (event) => {
       var input = event.target;
@@ -198,6 +207,7 @@ export default {
         "hidden"
       );
     };
+
     const show = (e) => {
       e.currentTarget.children[1].className = "active";
     };
@@ -214,6 +224,7 @@ export default {
       onFileSelected,
       deleteInput,
       addInput,
+      deleteCard,
     };
   },
 };
