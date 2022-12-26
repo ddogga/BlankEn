@@ -148,7 +148,7 @@
       </div>
 
       <div class="form-field col-lg-12">
-        <button class="fab">+</button>
+        <button class="fab" @click="addNewCard">+</button>
       </div>
 
       <div class="form-field col-lg-12">
@@ -176,12 +176,6 @@ export default {
         last: "",
         meaning: "",
       },
-      {
-        first: "nala",
-        black: "lala",
-        last: "re",
-        meaning: "",
-      },
     ]);
 
     const deleteCard = (index) => {
@@ -190,6 +184,16 @@ export default {
         return;
       }
       cards.value.splice(index, 1);
+    };
+
+    const addNewCard = (e) => {
+      e.preventDefault();
+      cards.value.push({
+        first: "",
+        black: "",
+        last: "",
+        meaning: "",
+      });
     };
 
     const onFileSelected = (event) => {
@@ -243,6 +247,7 @@ export default {
       deleteInput,
       addInput,
       deleteCard,
+      addNewCard,
     };
   },
 };
