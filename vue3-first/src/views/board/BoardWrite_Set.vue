@@ -65,73 +65,91 @@
           </div>
           <!-- input -->
           <div class="card-body">
-            <div
-              class="card-input form-field"
-              @mouseover="show"
-              @mouseout="hide"
-            >
-              <input
-                v-model="card.first"
-                class="input-text js-input"
-                placeholder="first "
-                required
-              />
+            <div class="english-input">
+              <div
+                class="card-input form-field"
+                @mouseover="show"
+                @mouseout="hide"
+              >
+                <input
+                  v-model="card.first"
+                  class="input-text js-input"
+                  placeholder="first "
+                  required
+                />
+                <span class="hidden">
+                  <img
+                    class="btn-hidden btn-hover"
+                    src="../../assets/images/x_white.png"
+                    alt=""
+                    @click="deleteInput"
+                  />
+                </span>
+              </div>
               <span class="hidden">
                 <img
-                  class="btn-hidden btn-hover"
-                  src="../../assets/images/x_white.png"
+                  class="btn-hover btn-hidden"
+                  src="../../assets/images/add_icon.png"
                   alt=""
-                  @click="deleteInput"
+                  @click="addInput"
+                />
+              </span>
+
+              <div class="card-input form-field">
+                <input
+                  v-model="card.blank"
+                  class="input-text js-input"
+                  placeholder="blank"
+                  required
+                />
+              </div>
+
+              <div
+                class="card-input form-field"
+                @mouseover="show"
+                @mouseout="hide"
+              >
+                <input
+                  v-model="card.last"
+                  class="input-text js-input"
+                  placeholder="last"
+                  required
+                />
+                <span class="hidden">
+                  <img
+                    class="btn-hover, btn-hidden"
+                    src="../../assets/images/x_white.png"
+                    alt=""
+                    @click="deleteInput"
+                  />
+                </span>
+              </div>
+              <span class="hidden">
+                <img
+                  class="btn-hover btn-hidden"
+                  src="../../assets/images/add_icon.png"
+                  alt=""
+                  @click="addInput"
                 />
               </span>
             </div>
-            <span class="hidden">
-              <img
-                class="btn-hover btn-hidden"
-                src="../../assets/images/add_icon.png"
-                alt=""
-                @click="addInput"
-              />
-            </span>
-
-            <div class="card-input form-field">
-              <input
-                v-model="card.blank"
-                class="input-text js-input"
-                placeholder="blank"
-                required
-              />
-            </div>
-
-            <div
-              class="card-input form-field"
-              @mouseover="show"
-              @mouseout="hide"
-            >
-              <input
-                v-model="card.last"
-                class="input-text js-input"
-                placeholder="last"
-                required
-              />
-              <span class="hidden">
-                <img
-                  class="btn-hover, btn-hidden"
-                  src="../../assets/images/x_white.png"
-                  alt=""
-                  @click="deleteInput"
+            <div class="korean-input">
+              <div class="card-input form-field">
+                <input
+                  v-model="card.meaning"
+                  class="input-text js-input"
+                  placeholder="한국어 의미"
+                  required
                 />
-              </span>
+              </div>
             </div>
-            <span class="hidden">
-              <img
-                class="btn-hover btn-hidden"
-                src="../../assets/images/add_icon.png"
-                alt=""
-                @click="addInput"
-              />
-            </span>
           </div>
+        </div>
+      </div>
+
+      <div class="form-field col-lg-12">
+        <div class="plus-box">
+          <button class="fab">+</button>
         </div>
       </div>
 
@@ -143,7 +161,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 import DropDown from "../../components/board/SearchingDropDown.vue";
 export default {
@@ -158,11 +176,13 @@ export default {
         first: "",
         black: "",
         last: "",
+        meaning: "",
       },
       {
         first: "nala",
         black: "lala",
         last: "re",
+        meaning: "",
       },
     ]);
 
@@ -241,7 +261,7 @@ export default {
   display: none !important;
 }
 
-.card-body {
+.english-input {
   display: flex;
 }
 
@@ -279,5 +299,43 @@ export default {
 .btn-hover:hover {
   background: #e0e5ec;
   color: #e0e5ec;
+  transform: scale(1.05);
+}
+
+.plus-box {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* .plus-btn {
+  box-shadow: 0 0 2em #777;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  color: #515676;
+  cursor: pointer;
+  font-size: 40px;
+} */
+
+.fab {
+  width: 70px;
+  height: 70px;
+  background-color: #515676;
+  border-color: white;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #666;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+}
+
+.fab:hover {
+  box-shadow: 0 6px 14px 0 #666;
+  transform: scale(1.05);
 }
 </style>
