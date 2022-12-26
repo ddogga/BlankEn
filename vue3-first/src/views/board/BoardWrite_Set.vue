@@ -75,17 +75,18 @@
                 placeholder="first "
                 required
               />
-
-              <img
-                class="btn-hover hidden"
-                src="../../assets/images/x_white.png"
-                alt=""
-                @click="deleteInput"
-              />
+              <span class="hidden">
+                <img
+                  class="btn-hidden btn-hover"
+                  src="../../assets/images/x_white.png"
+                  alt=""
+                  @click="deleteInput"
+                />
+              </span>
             </div>
             <span class="hidden">
               <img
-                class="btn-hover add-image"
+                class="btn-hover btn-hidden"
                 src="../../assets/images/add_icon.png"
                 alt=""
                 @click="addInput"
@@ -112,17 +113,18 @@
                 placeholder="last"
                 required
               />
-
-              <img
-                class="btn-hover hidden"
-                src="../../assets/images/x_white.png"
-                alt=""
-                @click="deleteInput"
-              />
+              <span class="hidden">
+                <img
+                  class="btn-hover, btn-hidden"
+                  src="../../assets/images/x_white.png"
+                  alt=""
+                  @click="deleteInput"
+                />
+              </span>
             </div>
             <span class="hidden">
               <img
-                class="btn-hover add-image"
+                class="btn-hover btn-hidden"
                 src="../../assets/images/add_icon.png"
                 alt=""
                 @click="addInput"
@@ -176,13 +178,26 @@ export default {
     };
 
     const deleteInput = (e) => {
-      e.currentTarget.parentElement.classList.add("hidden");
-      e.currentTarget.parentElement.nextElementSibling.classList.add("active");
-      e.currentTarget.parentElement.nextElementSibling.classList.remove(
+      e.currentTarget.parentElement.parentElement.classList.add("hidden");
+      e.currentTarget.parentElement.parentElement.classList.remove("active");
+      e.currentTarget.parentElement.parentElement.nextElementSibling.classList.add(
+        "active"
+      );
+      e.currentTarget.parentElement.parentElement.nextElementSibling.classList.remove(
         "hidden"
       );
     };
 
+    const addInput = (e) => {
+      e.currentTarget.parentElement.classList.add("hidden");
+      e.currentTarget.parentElement.classList.remove("active");
+      e.currentTarget.parentElement.previousElementSibling.classList.add(
+        "active"
+      );
+      e.currentTarget.parentElement.previousElementSibling.classList.remove(
+        "hidden"
+      );
+    };
     const show = (e) => {
       e.currentTarget.children[1].className = "active";
     };
@@ -198,6 +213,7 @@ export default {
       hide,
       onFileSelected,
       deleteInput,
+      addInput,
     };
   },
 };
@@ -207,8 +223,7 @@ export default {
 @import "../../assets/css/write.css";
 
 .active {
-  margin-top: 5px;
-  width: 30px;
+  display: "";
 }
 
 .hidden {
@@ -242,6 +257,12 @@ export default {
 .profile_img {
   width: 300px;
   height: 300px;
+}
+
+.btn-hidden {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
 }
 
 .btn-hover:hover {
