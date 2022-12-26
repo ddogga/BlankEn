@@ -148,9 +148,7 @@
       </div>
 
       <div class="form-field col-lg-12">
-        <div class="plus-box">
-          <button class="fab">+</button>
-        </div>
+        <button class="fab">+</button>
       </div>
 
       <div class="form-field col-lg-12">
@@ -288,6 +286,7 @@ export default {
 .profile_img {
   width: 300px;
   height: 300px;
+  cursor: pointer;
 }
 
 .btn-hidden {
@@ -301,22 +300,6 @@ export default {
   color: #e0e5ec;
   transform: scale(1.05);
 }
-
-.plus-box {
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* .plus-btn {
-  box-shadow: 0 0 2em #777;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  color: #515676;
-  cursor: pointer;
-  font-size: 40px;
-} */
 
 .fab {
   width: 70px;
