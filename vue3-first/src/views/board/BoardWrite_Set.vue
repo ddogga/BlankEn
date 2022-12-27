@@ -56,7 +56,7 @@
                 class="btn-hover close-image"
                 src="../../assets/images/x_button.png"
                 alt=""
-                @click="deleteCard(index)"
+                @click.prevent="deleteCard(index)"
               />
             </div>
           </nav>
@@ -83,7 +83,7 @@
                     class="btn-hidden btn-hover"
                     src="../../assets/images/x_white.png"
                     alt=""
-                    @click="deleteInput"
+                    @click.prevent="deleteInput"
                   />
                 </span>
               </div>
@@ -92,7 +92,7 @@
                   class="btn-hover btn-hidden"
                   src="../../assets/images/add_icon.png"
                   alt=""
-                  @click="addInput"
+                  @click.prevent="addInput"
                 />
               </span>
 
@@ -121,7 +121,7 @@
                     class="btn-hidden btn-hover"
                     src="../../assets/images/x_white.png"
                     alt=""
-                    @click="deleteInput"
+                    @click.prevent="deleteInput"
                   />
                 </span>
               </div>
@@ -130,7 +130,7 @@
                   class="btn-hover btn-hidden"
                   src="../../assets/images/add_icon.png"
                   alt=""
-                  @click="addInput"
+                  @click.prevent="addInput"
                 />
               </span>
             </div>
@@ -149,7 +149,7 @@
       </div>
 
       <div class="form-field col-lg-12">
-        <button class="fab" @click="addNewCard">+</button>
+        <button class="fab" @click.prevent="addNewCard">+</button>
       </div>
 
       <div class="form-field col-lg-12">
@@ -188,7 +188,6 @@ export default {
     };
 
     const addNewCard = (e) => {
-      e.preventDefault();
       cards.value.push({
         first: "",
         black: "",

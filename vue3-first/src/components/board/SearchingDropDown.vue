@@ -19,7 +19,7 @@
               type="checkbox"
               v-model="selectAll"
               value="all"
-              @change="all"
+              @change.prevent="all"
               class="category-checkbox"
             />
             <label>모두</label>
@@ -88,7 +88,7 @@
             <span class="badge bg-info text-white tag">
               {{ item }}
               <a
-                v-on:click="deleteTag(index, $event)"
+                @click.prevent="deleteTag(index, $event)"
                 style="text-decoration: none"
                 href="#"
                 >x</a
@@ -125,7 +125,6 @@ export default {
     };
 
     const deleteTag = (index, event) => {
-      event.preventDefault();
       selectedValues.value.splice(index, 1);
       if (selectedValues.value.length == 0) {
         console.log("텅");
