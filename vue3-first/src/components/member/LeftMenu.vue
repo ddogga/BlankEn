@@ -9,7 +9,7 @@
         >
           <!-- Collapse 1 -->
           <a
-            class="list-group-item list-group-item-action py-2 ripple"
+            class="list-group-item list-group-item-action py-2 ripple active"
             href="#collapseExample1"
             ><span>프로필</span>
           </a>
@@ -87,13 +87,13 @@ a {
 /* Sidebar */
 .sidebar {
   position: fixed;
+  border-radius: 5px;
   /* background-color: salmon; */
   margin-top: 58px; /* Height of navbar */
   width: 240px;
 }
 
 .sidebar .active {
-  border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
 

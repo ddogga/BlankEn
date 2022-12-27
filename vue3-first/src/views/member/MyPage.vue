@@ -1,23 +1,33 @@
 <template>
-  <div>
+  <div class="page">
     <LeftMenu />
 
-    <div class="test"></div>
+    <div class="container">
+      <component :is="currentView"> </component>
+    </div>
   </div>
 </template>
 
 <script>
 import LeftMenu from "../../components/member/LeftMenu.vue";
+import Profile from "../../components/member/Profile.vue";
 export default {
   components: {
     LeftMenu,
+    Profile,
   },
-  setup() {},
+  setup() {
+    const currentView = "Profile";
+
+    return {
+      currentView,
+    };
+  },
 };
 </script>
 
 <style scoped>
-.test {
-  height: 2000px;
+.page {
+  min-height: 1000px;
 }
 </style>
