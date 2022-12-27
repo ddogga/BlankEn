@@ -11,13 +11,14 @@
           <a
             class="list-group-item list-group-item-action py-2 ripple active"
             href="#"
+            @click="openPage('Profile')"
             ><span>프로필</span>
           </a>
           <!-- Collapse 2 -->
           <a
             class="list-group-item list-group-item-action py-2 ripple"
-            href="#collapseExample1"
-            @click="openPasswordMng"
+            href="#"
+            @click="openPage('Password')"
             ><span>비밀 번호 변경</span>
           </a>
           <!-- Collapse 3 -->
@@ -44,16 +45,30 @@
               <div class="accordion-body">
                 <ul class="collapse show list-group list-group-flush">
                   <li class="list-group-item py-1">
-                    <a href="" class="text-reset">내 퀴즈 목록</a>
+                    <a
+                      href="#"
+                      class="text-reset"
+                      @click="openPage('MyQuizList')"
+                      >내 퀴즈 목록</a
+                    >
                   </li>
                   <li class="list-group-item py-1">
-                    <a href="" class="text-reset">히스토리</a>
+                    <a href="#" class="text-reset" @click="openPage('History')"
+                      >히스토리</a
+                    >
                   </li>
                   <li class="list-group-item py-1">
-                    <a href="" class="text-reset">완료한 퀴즈</a>
+                    <a
+                      href="#"
+                      class="text-reset"
+                      @click="openPage('FinishList')"
+                      >완료한 퀴즈</a
+                    >
                   </li>
                   <li class="list-group-item py-1">
-                    <a href="" class="text-reset">좋아요 목록</a>
+                    <a href="#" class="text-reset" @click="openPage('LikeList')"
+                      >좋아요 목록</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -85,12 +100,12 @@ export default {
   },
   emits: ["getNewView"],
   setup(props, context) {
-    const openPasswordMng = () => {
-      context.emit("getNewView", "Password");
+    const openPage = (pageInfo) => {
+      context.emit("getNewView", pageInfo);
     };
 
     return {
-      openPasswordMng,
+      openPage,
     };
   },
 };
