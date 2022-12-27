@@ -10,13 +10,14 @@
           <!-- Collapse 1 -->
           <a
             class="list-group-item list-group-item-action py-2 ripple active"
-            href="#collapseExample1"
+            href="#"
             ><span>프로필</span>
           </a>
           <!-- Collapse 2 -->
           <a
             class="list-group-item list-group-item-action py-2 ripple"
             href="#collapseExample1"
+            @click="openPasswordMng"
             ><span>비밀 번호 변경</span>
           </a>
           <!-- Collapse 3 -->
@@ -75,7 +76,23 @@
 
 <script>
 export default {
-  setup() {},
+  props: {
+    //문자열로 필수
+    val: {
+      type: String,
+      required: true,
+    },
+  },
+  emits: ["getNewView"],
+  setup(props, context) {
+    const openPasswordMng = () => {
+      context.emit("getNewView", "Password");
+    };
+
+    return {
+      openPasswordMng,
+    };
+  },
 };
 </script>
 

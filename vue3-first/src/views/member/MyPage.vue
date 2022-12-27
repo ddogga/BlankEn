@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <LeftMenu />
+    <LeftMenu :val="currentView" @getNewView="changeCurrentView" />
 
     <div class="container">
       <component :is="currentView"> </component>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 import LeftMenu from "../../components/member/LeftMenu.vue";
 import Profile from "../../components/member/Profile.vue";
 import Password from "../../components/member/PasswordMng.vue";
@@ -28,10 +30,15 @@ export default {
     LikeList,
   },
   setup() {
-    const currentView = "Profile";
+    const currentView = ref("Profile");
+
+    const changeCurrentView = (value) => {
+      currentView.value = value;
+    };
 
     return {
       currentView,
+      changeCurrentView,
     };
   },
 };

@@ -23,7 +23,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    v-on:click="sortState('추천순')"
+                    @click="sortState('추천순')"
                     href="#!"
                     >추천순</a
                   >
@@ -31,7 +31,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    v-on:click="sortState('최신순')"
+                    @click="sortState('최신순')"
                     href="#!"
                     >최신순</a
                   >
