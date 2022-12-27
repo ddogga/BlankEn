@@ -36,12 +36,14 @@
           </router-link>
         </form>
         <div>
-          <img
-            src="../assets/images/snowball.jpg"
-            height="30"
-            width="30"
-            class="rounded-circle"
-          />
+          <router-link aria-current="page" to="/blanken/mypage">
+            <img
+              src="../assets/images/snowball.jpg"
+              height="30"
+              width="30"
+              class="rounded-circle"
+            />
+          </router-link>
         </div>
         <div class="nav-item dropdown">
           <a
