@@ -46,6 +46,7 @@
       <DropDown />
 
       <!-- card - list-->
+
       <div class="col mb-5" id="card-row">
         <div class="container card" v-for="(card, index) in cards" :key="index">
           <nav class="navbar navbar-expand-lg">
@@ -117,7 +118,7 @@
                 />
                 <span class="hidden">
                   <img
-                    class="btn-hover, btn-hidden"
+                    class="btn-hidden btn-hover"
                     src="../../assets/images/x_white.png"
                     alt=""
                     @click="deleteInput"
