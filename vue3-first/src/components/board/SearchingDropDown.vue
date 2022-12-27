@@ -85,7 +85,7 @@
             v-for="(item, index) in selectedValues"
             :key="index"
           >
-            <sapn class="badge bg-info text-white tag">
+            <span class="badge bg-info text-white tag">
               {{ item }}
               <a
                 v-on:click="deleteTag(index, $event)"
@@ -93,7 +93,7 @@
                 href="#"
                 >x</a
               >
-            </sapn>
+            </span>
           </li>
         </ul>
       </div>
