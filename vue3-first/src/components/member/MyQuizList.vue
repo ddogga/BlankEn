@@ -49,10 +49,10 @@
           <thead>
             <tr>
               <th>상태</th>
-              <th colspan="2" style="width: 50%">제목</th>
+              <th colspan="2" style="width: 40%">제목</th>
               <th>문제수</th>
               <th>카테고리</th>
-              <th>추천수</th>
+              <th>수정하기</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +68,10 @@
               </td>
               <td>David</td>
               <td>180</td>
-              <td>number</td>
+              <td>
+                <button class="update">Update</button>
+                <button class="delete">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -195,5 +198,25 @@ table th {
   opacity: 1;
   display: block;
   visibility: visible;
+}
+
+.update,
+.delete {
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.update {
+  border-top-left-radius: 10px 40px;
+  border-bottom-left-radius: 40px 10px;
+  background-color: #6ad0ff;
+}
+
+.delete {
+  border-top-right-radius: 40px 10px;
+  border-bottom-right-radius: 10px 40px;
+  background-color: hsl(340, 76%, 64%);
 }
 </style>
