@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-  >
+  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 justify-content-center">
     <div class="pagination:container" style="margin-top: 50px">
       <div class="pagination:number arrow">
         <svg width="18" height="18">

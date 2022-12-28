@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>내 퀴즈 목록</h1>
+  <div class="get-in-touch">
+    <h1 id="title">내 퀴즈 목록</h1>
     <div class="container px-4 px-lg-5 mt-5">
       <nav class="navbar navbar-expand-lg">
         <div class="container gx-4 px-lg-5" style="width: 1000px">
@@ -80,7 +80,9 @@
         </div>
       </div>
 
-      <Pagination />
+      <div class="container">
+        <Pagination />
+      </div>
     </div>
   </div>
 </template>
@@ -119,6 +121,11 @@ export default {
 </script>
 
 <style scoped>
+#title {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
 /*table css */
 table {
   width: 1000px;

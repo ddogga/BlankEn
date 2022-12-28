@@ -48,8 +48,4 @@ export default {
 .page {
   min-height: 1000px;
 }
-
-/* .container {
-  width: 50%;
-} */
 </style>
