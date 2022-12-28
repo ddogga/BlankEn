@@ -2,7 +2,7 @@
   <div class="page">
     <LeftMenu :val="currentView" @getNewView="changeCurrentView" />
 
-    <div class="container">
+    <div class="container col-lg-7 col-sm-12 col-xs-12">
       <component :is="currentView"> </component>
     </div>
   </div>
@@ -48,4 +48,8 @@ export default {
 .page {
   min-height: 1000px;
 }
+
+/* .container {
+  width: 50%;
+} */
 </style>

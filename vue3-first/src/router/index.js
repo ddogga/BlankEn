@@ -4,7 +4,12 @@ import BoardList from "../views/board/BoardList.vue";
 import Login from "../views/member/Login.vue";
 import SetWrite from "../views/board/BoardWrite_Set.vue";
 import MyPage from "../views/member/MyPage.vue";
-import LeftMenu from "../components/member/LeftMenu.vue";
+// import Profile from "../components/member/Profile.vue";
+// import Password from "../components/member/PasswordMng.vue";
+// import MyQuizList from "../components/member/MyQuizList.vue";
+// import History from "../components/member/History.vue";
+// import FinishList from "../components/member/FinishList.vue";
+// import LikeList from "../components/member/LikeList.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +43,36 @@ const router = createRouter({
       name: "MyPage",
       component: MyPage,
     },
+    // {
+    //   path: "/blanken/mypage/profile",
+    //   name: "Profile",
+    //   component: Profile,
+    // },
+    // {
+    //   path: "/blanken/mypage/password_mng",
+    //   name: "Password",
+    //   component: Password,
+    // },
+    // {
+    //   path: "/blanken/mypage/my_quiz",
+    //   name: "MyQuizList",
+    //   component: MyQuizList,
+    // },
+    // {
+    //   path: "/blanken/mypage/history",
+    //   name: "History",
+    //   component: History,
+    // },
+    // {
+    //   path: "/blanken/mypage/finish_list",
+    //   name: "FinishList",
+    //   component: FinishList,
+    // },
+    // {
+    //   path: "/blanken/mypage/like_list",
+    //   name: "LikeList",
+    //   component: LikeList,
+    // },
   ],
 });
 

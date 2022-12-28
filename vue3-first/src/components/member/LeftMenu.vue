@@ -9,16 +9,16 @@
         >
           <!-- Collapse 1 -->
           <a
-            class="list-group-item list-group-item-action py-2 ripple active"
+            class="list-group-item list-group-item-action py-2 ripple"
             href="#"
-            @click="openPage('Profile')"
+            @click="openPage('Profile', $event)"
             ><span>프로필</span>
           </a>
           <!-- Collapse 2 -->
           <a
             class="list-group-item list-group-item-action py-2 ripple"
             href="#"
-            @click="openPage('Password')"
+            @click="openPage('Password', $event)"
             ><span>비밀 번호 변경</span>
           </a>
           <!-- Collapse 3 -->
@@ -48,12 +48,15 @@
                     <a
                       href="#"
                       class="text-reset"
-                      @click="openPage('MyQuizList')"
+                      @click="openPage('MyQuizList', $event)"
                       >내 퀴즈 목록</a
                     >
                   </li>
                   <li class="list-group-item py-1">
-                    <a href="#" class="text-reset" @click="openPage('History')"
+                    <a
+                      href="#"
+                      class="text-reset"
+                      @click="openPage('History', $event)"
                       >히스토리</a
                     >
                   </li>
@@ -61,12 +64,15 @@
                     <a
                       href="#"
                       class="text-reset"
-                      @click="openPage('FinishList')"
+                      @click="openPage('FinishList', $event)"
                       >완료한 퀴즈</a
                     >
                   </li>
                   <li class="list-group-item py-1">
-                    <a href="#" class="text-reset" @click="openPage('LikeList')"
+                    <a
+                      href="#"
+                      class="text-reset"
+                      @click="openPage('LikeList', $event)"
                       >좋아요 목록</a
                     >
                   </li>
@@ -100,7 +106,9 @@ export default {
   },
   emits: ["getNewView"],
   setup(props, context) {
-    const openPage = (pageInfo) => {
+    console.log(`props.val = ${props.val}`);
+
+    const openPage = (pageInfo, e) => {
       context.emit("getNewView", pageInfo);
     };
 
@@ -125,8 +133,9 @@ a {
   width: 240px;
 }
 
-.sidebar .active {
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+.active {
+  color: rgb(178, 62, 245);
+  font-weight: bold;
 }
 
 .sidebar-sticky {
