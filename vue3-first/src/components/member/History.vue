@@ -48,7 +48,7 @@
         <table>
           <thead>
             <tr>
-              <th>상태</th>
+              <th>진행 상태</th>
               <th colspan="2" style="width: 50%">제목</th>
               <th>문제수</th>
               <th>카테고리</th>
@@ -58,7 +58,7 @@
           <tbody>
             <tr>
               <td rowspan="2">
-                <span class="badge bg-success text-white">완료</span>
+                <span>1/20</span>
               </td>
               <td style="border-bottom: none">제목</td>
               <td rowspan="2">
