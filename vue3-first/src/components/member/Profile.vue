@@ -8,19 +8,22 @@
           <div class="form-header-item" style="float: left">
             <p>프로필 이미지</p>
             <label for="profile">
-              <span>
+              <span v-if="preview == ''">
                 <img
-                  width="100px"
                   class="profile_img"
-                  src="../../assets/images/upload_image.jpg"
+                  src="../../assets/images/noprofile.jpg"
                   alt="profile"
                 />
+              </span>
+              <span v-if="preview != ''">
+                <img class="profile_img" :src="preview" />
               </span>
 
               <input
                 type="file"
                 id="profile"
                 style="display: none"
+                @change="onFileSelected"
                 accept="image/*"
               />
             </label>
@@ -58,8 +61,29 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-  setup() {},
+  setup() {
+    const preview = ref("");
+
+    const onFileSelected = (event) => {
+      var input = event.target;
+      console.log(input.files);
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          preview.value = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    };
+
+    return {
+      preview,
+      onFileSelected,
+    };
+  },
 };
 </script>
 
@@ -68,6 +92,7 @@ export default {
 
 #title {
   text-align: left;
+  margin-bottom: 50px;
 }
 
 .form-field {
@@ -81,11 +106,18 @@ export default {
 }
 
 .finish_count {
+  text-align: right;
 }
 
 .form-section {
   border: 2px rgb(156, 156, 156) solid;
   border-radius: 20px;
   padding: 30px;
+}
+
+.profile_img {
+  cursor: pointer;
+  width: 100px;
+  border-radius: 50%;
 }
 </style>
