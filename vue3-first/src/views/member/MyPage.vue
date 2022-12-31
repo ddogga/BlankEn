@@ -2,6 +2,10 @@
   <div class="page">
     <LeftMenu :val="currentView" @getNewView="changeCurrentView" />
 
+    <div>
+      {{ page }}
+    </div>
+
     <div class="container col-lg-7 col-sm-12 col-xs-12">
       <component :is="currentView"> </component>
     </div>
@@ -9,7 +13,8 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
 import LeftMenu from "../../components/member/LeftMenu.vue";
 import Profile from "../../components/member/Profile.vue";
@@ -28,6 +33,12 @@ export default {
     History,
     FinishList,
     LikeList,
+  },
+  props: {
+    page: {
+      type: String,
+      default: "",
+    },
   },
   setup() {
     const currentView = ref("Profile");

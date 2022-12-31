@@ -39,9 +39,10 @@ const router = createRouter({
       component: SetWrite,
     },
     {
-      path: "/blanken/mypage",
+      path: "/blanken/mypage/:page",
       name: "MyPage",
       component: MyPage,
+      props: true,
     },
     // {
     //   path: "/blanken/mypage/profile",

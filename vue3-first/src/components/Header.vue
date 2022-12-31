@@ -36,7 +36,10 @@
           </router-link>
         </form>
         <div>
-          <router-link aria-current="page" to="/blanken/mypage">
+          <router-link
+            aria-current="page"
+            :to="{ name: 'MyPage', params: { page: 'profile' } }"
+          >
             <img
               src="../assets/images/snowball.jpg"
               height="30"
@@ -56,21 +59,15 @@
             >ID</a
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <router-link class="dropdown-item" to="/blanken/login"
-                >프로필</router-link
-              >
+            <li @click="clickNav('profile')">
+              <a class="dropdown-item">프로필</a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
-              <router-link class="dropdown-item" to="/blanken/login"
-                >비밀번호 변경</router-link
-              >
+            <li @click="clickNav('password')">
+              <a class="dropdown-item">비밀번호 변경</a>
             </li>
-            <li>
-              <router-link class="dropdown-item" to="/blanken/login"
-                >보관함</router-link
-              >
+            <li @click="clickNav('my_quiz_list')">
+              <a class="dropdown-item">보관함</a>
             </li>
           </ul>
         </div>
@@ -83,6 +80,15 @@
 import { useRouter } from "vue-router";
 
 export default {
-  setup() {},
+  setup() {
+    const router = useRouter();
+    const clickNav = (nav) => {
+      router.push({ name: "MyPage", params: { page: nav } });
+    };
+
+    return {
+      clickNav,
+    };
+  },
 };
 </script>
