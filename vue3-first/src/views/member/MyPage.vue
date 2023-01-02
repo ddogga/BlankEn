@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 
 import LeftMenu from "../../components/member/LeftMenu.vue";
@@ -40,12 +40,14 @@ export default {
       default: "",
     },
   },
-  setup() {
+  setup(props) {
     const currentView = ref("Profile");
 
     const changeCurrentView = (value) => {
       currentView.value = value;
     };
+
+    currentView.value = props.page;
 
     return {
       currentView,

@@ -59,14 +59,14 @@
             >ID</a
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li @click="clickNav('profile')">
+            <li @click="clickNav('Profile')">
               <a class="dropdown-item">프로필</a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li @click="clickNav('password')">
+            <li @click="clickNav('Password')">
               <a class="dropdown-item">비밀번호 변경</a>
             </li>
-            <li @click="clickNav('my_quiz_list')">
+            <li @click="clickNav('MyQuizList')">
               <a class="dropdown-item">보관함</a>
             </li>
           </ul>

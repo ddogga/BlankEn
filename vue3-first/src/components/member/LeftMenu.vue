@@ -8,12 +8,12 @@
           class="list-group list-group-flush mx-3 mt-4"
         >
           <!-- Collapse 1 -->
-          <a
+          <router-link
             class="list-group-item list-group-item-action py-2 ripple"
-            href="#"
+            :to="{ name: 'MyPage', params: { page: 'profile' } }"
             @click="openPage('Profile', $event)"
             ><span>프로필</span>
-          </a>
+          </router-link>
           <!-- Collapse 2 -->
           <a
             class="list-group-item list-group-item-action py-2 ripple"
