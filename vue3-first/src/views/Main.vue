@@ -28,6 +28,15 @@
     <!-- Section-->
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
+        <!-- row-cols-xl-4 한줄에 오는 최대 카드 수-->
+        <nav class="navbar navbar-expand-lg">
+          <div class="container gx-4 px-lg-5">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></div>
+              <div><a href="">더보기</a></div>
+            </div>
+          </div>
+        </nav>
         <div
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
@@ -43,15 +52,32 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Fancy Product</h5>
+                  <h5 class="fw-bolder">제목</h5>
                   <!-- Product price-->
-                  $40.00 - $80.00
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 25%"
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  19/20
                 </div>
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a>Test</a>
+                <div>
+                  <img
+                    src="../assets/images/snowball.jpg"
+                    height="30"
+                    width="30"
+                    style="margin-right: 10px"
+                    class="rounded-circle"
+                  />
+                  <a>만든사람</a>
                 </div>
               </div>
             </div>
@@ -177,6 +203,18 @@
               </div>
             </div>
           </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container gx-4 px-lg-5">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></div>
+              <div><a href="">더보기</a></div>
+            </div>
+          </div>
+        </nav>
+        <div
+          class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        >
           <div class="col mb-5">
             <div class="card h-100">
               <!-- Sale badge-->
