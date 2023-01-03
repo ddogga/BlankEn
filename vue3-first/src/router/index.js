@@ -4,6 +4,7 @@ import BoardList from "../views/board/BoardList.vue";
 import Login from "../views/member/Login.vue";
 import SetWrite from "../views/board/BoardWrite_Set.vue";
 import MyPage from "../views/member/MyPage.vue";
+import Play from "../views/board/BoardPlay.vue";
 // import Profile from "../components/member/Profile.vue";
 // import Password from "../components/member/PasswordMng.vue";
 // import MyQuizList from "../components/member/MyQuizList.vue";
@@ -43,6 +44,11 @@ const router = createRouter({
       name: "MyPage",
       component: MyPage,
       props: true,
+    },
+    {
+      path: "/blanken/play",
+      name: "Play",
+      component: Play,
     },
     // {
     //   path: "/blanken/mypage/profile",

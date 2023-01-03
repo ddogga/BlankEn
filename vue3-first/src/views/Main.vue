@@ -43,11 +43,14 @@
           <div class="col mb-5">
             <div class="card h-100">
               <!-- Product image-->
-              <img
-                class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
-              />
+              <router-link aria-current="page" :to="{ name: 'Play' }">
+                <img
+                  class="card-img-top"
+                  src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                  alt="..."
+                />
+              </router-link>
+
               <!-- Product details-->
               <div class="card-body p-4">
                 <div class="text-center">
