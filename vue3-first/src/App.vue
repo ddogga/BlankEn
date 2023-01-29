@@ -1,24 +1,24 @@
 <template>
   <div>
-    <Nav/>
+    <Nav />
     <router-view />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Nav from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Main from './views/Main.vue';
+import Nav from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import Main from "./views/Main.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Nav,
     Main,
-    Footer
-  }
-}
+    Footer,
+  },
+};
 </script>
 
 <style>
