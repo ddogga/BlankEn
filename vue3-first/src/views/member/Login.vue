@@ -118,7 +118,7 @@ export default {
       try {
         const res = await axios.post("api/members/new", join.value);
         if (res.data) {
-          alert(res.data + "회원 가입을 축하합니다.");
+          alert(res.data + "님 회원 가입을 축하합니다.");
           router.push({
             name: "Login",
           });

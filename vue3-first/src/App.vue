@@ -30,7 +30,7 @@ export default {
     //페이지 이동하기 위해 useRouter()를 사용합니다.
     const router = useRouter();
 
-    //member_login.vue에서 context.emit("parent_getSession","");로 보냅니다.
+    // member_login.vue에서 context.emit("parent_getSession","");로 보냅니다.
     // /vue/boards 상태에서 /vue/login으로 직접 주소를 입력한 경우 내부적으로 로그아웃이 되도록 처리합니다.
     const getSession = async (received_id) => {
       try {
