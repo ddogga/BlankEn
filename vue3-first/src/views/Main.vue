@@ -374,7 +374,10 @@
 
 <script scoped>
 export default {
-  setup() {},
+  emits: ["parent_getSession"],
+  setup(props, context) {
+    context.emit("parent_getSession", "main");
+  },
 };
 </script>
 

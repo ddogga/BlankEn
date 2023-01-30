@@ -58,22 +58,36 @@
         </div>
         <div class="form sign-up">
           <h2 class="h2">Time to feel like home,</h2>
-          <label class="label">
-            <span>Name</span>
-            <input class="input" type="text" />
-          </label>
-          <label class="label">
-            <span>Email</span>
-            <input class="input" type="email" />
-          </label>
-          <label class="label">
-            <span>Password</span>
-            <input class="input" type="password" />
-          </label>
-          <button type="button" class="submit button">Sign Up</button>
-          <button type="button" class="fb-btn button">
-            Join with <span>facebook</span>
-          </button>
+          <form @submit.prevent="joinProcess">
+            <label class="label">
+              <span>Id</span>
+              <input
+                class="input"
+                type="text"
+                v-model="join.userName"
+                required
+                maxlength="12"
+              />
+            </label>
+            <label class="label">
+              <span>Email</span>
+              <input class="input" type="email" v-model="join.email" required />
+            </label>
+            <label class="label">
+              <span>Password</span>
+              <input
+                class="input"
+                type="password"
+                v-model="join.password"
+                required
+              />
+            </label>
+
+            <button type="submit" class="submit button">Sign Up</button>
+            <button type="button" class="fb-btn button">
+              Join with <span>facebook</span>
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -82,15 +96,44 @@
 
 <script>
 import { change } from "@/assets/js/login.js";
+import axios from "../../axios/axiossetting";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    const join = ref({
+      userName: "",
+      email: "",
+      password: "",
+    });
+
+    const router = useRouter();
+
     const toggle = () => {
       change();
     };
 
+    const joinProcess = async () => {
+      try {
+        const res = await axios.post("api/members/new", join.value);
+        if (res.data) {
+          alert(res.data + "회원 가입을 축하합니다.");
+          router.push({
+            name: "Login",
+          });
+        } else {
+          console.log("회원가입 실패");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     return {
+      join,
       toggle,
+      joinProcess,
     };
   },
 };
