@@ -20,14 +20,8 @@
           Connect with <span>facebook</span>
         </button>
 
-        <a
-          href="https://dribbble.com/shots/3306190-Login-Registration-form"
-          target="_blank"
-          class="icon-link"
-        >
-          <img
-            src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png"
-          />
+        <a href="/oauth2/authorization/naver" target="_blank" class="icon-link">
+          <img src="../../assets/images/naver_logo.png" />
         </a>
         <a
           href="https://twitter.com/NikolayTalanov"
