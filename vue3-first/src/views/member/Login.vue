@@ -20,7 +20,11 @@
           Connect with <span>facebook</span>
         </button>
 
-        <a href="/oauth2/authorization/naver" target="_blank" class="icon-link">
+        <a
+          href="http://localhost:8080/blanken/api/oauth2/authorize/naver?redirect_uri=http://localhost:8080/oauth/redirect"
+          target="_blank"
+          class="icon-link"
+        >
           <img src="../../assets/images/naver_logo.png" />
         </a>
         <a

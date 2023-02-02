@@ -5,6 +5,7 @@ import Login from "../views/member/Login.vue";
 import SetWrite from "../views/board/BoardWrite_Set.vue";
 import MyPage from "../views/member/MyPage.vue";
 import Play from "../views/board/BoardPlay.vue";
+import Redirect from "../views/member/Redirect.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: "/blanken/login",
       name: "Login",
       component: Login,
+    },
+    {
+      path: "/oauth/redirect",
+      name: "Redirect",
+      component: Redirect,
     },
     {
       path: "/blanken/set_write",
