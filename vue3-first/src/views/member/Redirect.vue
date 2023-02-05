@@ -15,7 +15,7 @@ export default {
     // 컴포넌트 렌더링이 되었을 때,
 
     // 쿼리스트링으로부터 토큰을 획득
-    const token = route.query.code;
+    const token = route.query.token;
     console.log("token", token);
 
     // 토큰이 존재하는 경우, Vuex Store에 토큰을 저장한다.
