@@ -26,7 +26,14 @@
             </router-link>
           </li>
         </ul>
-        <form class="d-flex">
+        <div class="d-flex" v-if="parent_id">
+          <router-link class="nav-link active" aria-current="page" to="/">
+            <button @click="logout" class="btn btn-outline-dark" type="submit">
+              로그아웃
+            </button>
+          </router-link>
+        </div>
+        <div class="d-flex" v-if="!parent_id">
           <router-link
             class="nav-link active"
             aria-current="page"
@@ -34,8 +41,9 @@
           >
             <button class="btn btn-outline-dark" type="submit">로그인</button>
           </router-link>
-        </form>
-        <div>
+        </div>
+
+        <div v-if="parent_id">
           <router-link
             aria-current="page"
             :to="{ name: 'MyPage', params: { page: 'profile' } }"
@@ -48,7 +56,7 @@
             />
           </router-link>
         </div>
-        <div class="nav-item dropdown">
+        <div v-if="parent_id" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             id="navbarDropdown"
@@ -77,17 +85,35 @@
 </template>
 
 <script>
+import axios from "axios";
 import { useRouter } from "vue-router";
 
 export default {
+  props: {
+    parent_id: {
+      type: String,
+      required: true,
+    },
+  },
   setup() {
     const router = useRouter();
     const clickNav = (nav) => {
       router.push({ name: "MyPage", params: { page: nav } });
     };
 
+    const logout = async () => {
+      try {
+        const res = await axios.post("api/members/logout");
+
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     return {
       clickNav,
+      logout,
     };
   },
 };
