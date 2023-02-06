@@ -98,7 +98,10 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
-  setup() {
+  emits: ["parent_getSession"],
+  setup(props, context) {
+    context.emit("parent_getSession", "login");
+
     const join = ref({
       userName: "",
       email: "",

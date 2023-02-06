@@ -9,6 +9,13 @@ export default createStore({
       state.token = token;
     },
   },
+
+  getters: {
+    get_token(state) {
+      return state.token;
+    },
+  },
+
   actions: {
     //mutation을 실행시키는 역할
 

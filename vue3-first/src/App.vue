@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nav />
+    <Nav :parent_id="id" />
     <div class="container">
       <router-view @parent_getSession="getSession" :parent_id="id" />
     </div>
@@ -15,6 +15,7 @@ import Main from "./views/Main.vue";
 
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import axios from "./axios/axiossetting";
 
 export default {
@@ -27,22 +28,22 @@ export default {
   setup() {
     const id = ref("");
 
-    //페이지 이동하기 위해 useRouter()를 사용합니다.
     const router = useRouter();
+    const store = useStore();
 
-    // member_login.vue에서 context.emit("parent_getSession","");로 보냅니다.
-    // /vue/boards 상태에서 /vue/login으로 직접 주소를 입력한 경우 내부적으로 로그아웃이 되도록 처리합니다.
     const getSession = async (received_id) => {
-      try {
-        console.log(received_id);
-        const res = await axios.get("api/hello");
-        console.log(res.data);
-
-        router.push({
-          name: "Main",
-        });
-      } catch (err) {
-        console.log(err);
+      //사용자가 로그인 상태에서 login을 url에 직접칠경우 로그아웃을 진행
+      if (received_id == "login") {
+        try {
+          const res = await axios.post("api/members/logout");
+          id.value = "";
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        id.value = store.getters.get_token;
+        console.log(store.getters.get_token);
       }
     };
 
