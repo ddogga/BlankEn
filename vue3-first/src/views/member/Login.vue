@@ -57,11 +57,21 @@
           <h2 class="h2">Time to feel like home,</h2>
           <form @submit.prevent="joinProcess">
             <label class="label">
-              <span>Id</span>
+              <span>Name</span>
               <input
                 class="input"
                 type="text"
                 v-model="join.userName"
+                required
+                maxlength="12"
+              />
+            </label>
+            <label class="label">
+              <span>Nickname</span>
+              <input
+                class="input"
+                type="text"
+                v-model="join.nickname"
                 required
                 maxlength="12"
               />
@@ -81,9 +91,6 @@
             </label>
 
             <button type="submit" class="submit button">Sign Up</button>
-            <button type="button" class="fb-btn button">
-              Join with <span>facebook</span>
-            </button>
           </form>
         </div>
       </div>
@@ -104,6 +111,7 @@ export default {
 
     const join = ref({
       userName: "",
+      nickname: "",
       email: "",
       password: "",
     });

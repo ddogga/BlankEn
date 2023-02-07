@@ -64,7 +64,7 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            >ID</a
+            >{{ parent_id }}</a
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li @click="clickNav('Profile')">
@@ -95,7 +95,7 @@ export default {
       required: true,
     },
   },
-  setup() {
+  setup(props, context) {
     const router = useRouter();
     const clickNav = (nav) => {
       router.push({ name: "MyPage", params: { page: nav } });
@@ -104,11 +104,15 @@ export default {
     const logout = async () => {
       try {
         const res = await axios.post("api/members/logout");
-
+        refreshAll();
         console.log(res.data);
       } catch (error) {
         console.log(error);
       }
+    };
+
+    const refreshAll = async () => {
+      router.go();
     };
 
     return {

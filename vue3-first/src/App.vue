@@ -42,8 +42,13 @@ export default {
           console.log(err);
         }
       } else {
-        id.value = store.getters.get_token;
-        console.log(store.getters.get_token);
+        try {
+          //서버 쪽 세션에 저장된 아이디 가져오기
+          const res = await axios.get("api/getSession");
+          id.value = res.data.nickname;
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
 
