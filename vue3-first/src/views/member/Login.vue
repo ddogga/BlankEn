@@ -24,8 +24,16 @@
           href="http://localhost:8080/blanken/api/oauth2/authorize/naver?redirect_uri=http://localhost:8080/oauth/redirect"
           class="icon-link"
         >
-          <img src="../../assets/images/naver_logo.png" />
+          <img src="../../assets/images/naver_icon.png" />
         </a>
+
+        <a
+          href="http://localhost:8080/blanken/api/oauth2/authorize/kakao?redirect_uri=http://localhost:8080/oauth/redirect"
+          class="icon-link"
+        >
+          <img src="../../assets/images/kakao_icon.png" />
+        </a>
+
         <a
           href="https://twitter.com/NikolayTalanov"
           target="_blank"
