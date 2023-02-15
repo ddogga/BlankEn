@@ -35,13 +35,10 @@
         </a>
 
         <a
-          href="https://twitter.com/NikolayTalanov"
-          target="_blank"
+          href="http://localhost:8080/blanken/api/oauth2/authorize/google?redirect_uri=http://localhost:8080/oauth/redirect"
           class="icon-link"
         >
-          <img
-            src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png"
-          />
+          <img src="../../assets/images/google_icon.png" />
         </a>
       </div>
       <div class="sub-cont">
