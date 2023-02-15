@@ -45,7 +45,14 @@ export default {
         try {
           //서버 쪽 세션에 저장된 아이디 가져오기
           const res = await axios.get("api/getSession");
-          id.value = res.data.nickname;
+
+          if (res.data.nickname) {
+            id.value = res.data.nickname;
+          } else {
+            id.value = res.data.email;
+          }
+
+          console.log("getSession" + id.value);
         } catch (err) {
           console.log(err);
         }

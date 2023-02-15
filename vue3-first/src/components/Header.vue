@@ -64,7 +64,7 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            >{{ parent_id }}</a
+            >{{ parent_id }}님</a
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li @click="clickNav('Profile')">

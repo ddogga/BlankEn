@@ -32,6 +32,8 @@ export default {
         name: "Login",
       });
     }
+
+    return {};
   },
 };
 </script>
