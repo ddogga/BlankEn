@@ -1,8 +1,8 @@
 <template>
   <div class="container px-4 px-lg-5 mt-5">
     <nav class="navbar navbar-expand-lg">
-      <div class="container gx-4 px-lg-5"></div>
-      <div>
+      <div class="container px-4 px-lg-5">
+        <div></div>
         <img
           class="close-image"
           src="../../assets/images/x_button.png"
@@ -12,10 +12,26 @@
       </div>
     </nav>
 
-    <div
-      class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-    >
-      agesgesgg
+    <div class="justify-content-center">
+      <h2 class="h2">비밀번호 재설정</h2>
+      <div class="ex">
+        회원 가입한 이메일을 입력하여 주세요. <br />
+        비밀번호를 변경할 수 있는 링크가 전송됩니다.
+      </div>
+      <form @submit.prevent="loginProcess">
+        <label class="label">
+          <span>Email</span>
+          <input
+            class="input"
+            type="email"
+            placeholder="example@gmail.com"
+            required
+          />
+        </label>
+        <button type="submit" class="submit button">
+          비밀번호 재설정 메일 전송
+        </button>
+      </form>
     </div>
   </div>
 </template>
@@ -36,10 +52,13 @@ export default {
 </script>
 
 <style scoped>
+.ex {
+  margin-bottom: 100px;
+}
 .close-image {
   width: 30px;
   height: 30px;
-  margin-top: 15px;
+  margin-top: 0;
 }
 
 body {

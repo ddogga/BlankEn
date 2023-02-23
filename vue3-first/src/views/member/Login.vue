@@ -219,7 +219,7 @@ export default {
 .popup-window {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 .pop-up {
   position: absolute;
