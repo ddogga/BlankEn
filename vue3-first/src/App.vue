@@ -52,7 +52,7 @@ export default {
             id.value = res.data.email;
           }
 
-          console.log("getSession" + id.value);
+          console.log("getSession : " + id.value);
         } catch (err) {
           console.log(err);
         }

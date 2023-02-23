@@ -4,21 +4,23 @@
     <div class="cont">
       <div class="form sign-in">
         <h2 class="h2">Welcome back,</h2>
-        <label class="label">
-          <span>Email</span>
-          <input class="input" type="email" />
-        </label>
-        <label class="label">
-          <span>Password</span>
-          <input class="input" type="password" />
-        </label>
-        <router-link class="nav-link active" aria-current="page" to="/">
-          <p class="forgot-pass">Forgot password?</p>
-        </router-link>
-        <button type="button" class="submit button">Sign In</button>
-        <button type="button" class="fb-btn button">
-          Connect with <span>facebook</span>
-        </button>
+        <form @submit.prevent="loginProcess">
+          <label class="label">
+            <span>Email</span>
+            <input class="input" type="email" v-model="login.email" />
+          </label>
+          <label class="label">
+            <span>Password</span>
+            <input class="input" type="password" v-model="login.password" />
+          </label>
+          <router-link class="nav-link active" aria-current="page" to="/">
+            <p class="forgot-pass">Forgot password?</p>
+          </router-link>
+          <button type="submit" class="submit button">Sign In</button>
+          <button type="button" class="fb-btn button">
+            Connect with <span>facebook</span>
+          </button>
+        </form>
 
         <a
           href="http://localhost:8080/blanken/api/oauth2/authorize/naver?redirect_uri=http://localhost:8080/oauth/redirect"
@@ -108,11 +110,17 @@ import { change } from "@/assets/js/login.js";
 import axios from "../../axios/axiossetting";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default {
   emits: ["parent_getSession"],
   setup(props, context) {
     context.emit("parent_getSession", "login");
+
+    const login = ref({
+      email: "",
+      password: "",
+    });
 
     const join = ref({
       userName: "",
@@ -125,6 +133,25 @@ export default {
 
     const toggle = () => {
       change();
+    };
+
+    const store = useStore();
+
+    const loginProcess = async () => {
+      try {
+        const res = await axios.post("api/members/login", login.value);
+        console.log("token", res.data);
+        if (res.data) {
+          store.dispatch("set_token", res.data);
+          sessionStorage.setItem("accessToken", res.data);
+          window.alert("로그인하였습니다.");
+          router.push({
+            name: "Main",
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
     };
 
     const joinProcess = async () => {
@@ -145,6 +172,8 @@ export default {
 
     return {
       join,
+      login,
+      loginProcess,
       toggle,
       joinProcess,
     };
