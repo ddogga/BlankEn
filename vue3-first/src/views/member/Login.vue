@@ -13,14 +13,26 @@
             <span>Password</span>
             <input class="input" type="password" v-model="login.password" />
           </label>
-          <router-link class="nav-link active" aria-current="page" to="/">
+
+          <a href="#" class="nav-link active" @click="openPasswordPopup">
             <p class="forgot-pass">Forgot password?</p>
-          </router-link>
+          </a>
+
           <button type="submit" class="submit button">Sign In</button>
           <button type="button" class="fb-btn button">
             Connect with <span>facebook</span>
           </button>
         </form>
+
+        <div class="popup-view popup-background" :class="{ active: popupView }">
+          <div class="popup-window">
+            <div class="pop-up">
+              <PsswordPopUp
+                @close-pssword-popup="openPasswordPopup"
+              ></PsswordPopUp>
+            </div>
+          </div>
+        </div>
 
         <a
           href="http://localhost:8080/blanken/api/oauth2/authorize/naver?redirect_uri=http://localhost:8080/oauth/redirect"
@@ -112,10 +124,17 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
+import PsswordPopUp from "../../components/member/PsswordPopUp.vue";
+
 export default {
+  components: {
+    PsswordPopUp,
+  },
   emits: ["parent_getSession"],
   setup(props, context) {
     context.emit("parent_getSession", "login");
+
+    const router = useRouter();
 
     const login = ref({
       email: "",
@@ -129,7 +148,11 @@ export default {
       password: "",
     });
 
-    const router = useRouter();
+    const popupView = ref(false);
+
+    const openPasswordPopup = () => {
+      popupView.value = popupView.value ? false : true;
+    };
 
     const toggle = () => {
       change();
@@ -176,9 +199,52 @@ export default {
       loginProcess,
       toggle,
       joinProcess,
+      popupView,
+      openPasswordPopup,
     };
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+.popup-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+
+  /* 임시 지정 */
+  width: 500px;
+  height: 500px;
+
+  /* 초기에 약간 아래에 배치 */
+  transform: translate(-50%, -40%);
+}
+
+.popup-view {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+.active {
+  opacity: 1;
+  display: block;
+  visibility: visible;
+}
+</style>
