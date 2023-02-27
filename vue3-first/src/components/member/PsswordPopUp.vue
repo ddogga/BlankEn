@@ -1,7 +1,7 @@
 <template>
-  <div class="container px-4 px-lg-5 mt-5">
+  <div class="container mt-4">
     <nav class="navbar navbar-expand-lg">
-      <div class="container px-4 px-lg-5">
+      <div class="container px-4">
         <div></div>
         <img
           class="close-image"
@@ -18,13 +18,14 @@
         회원 가입한 이메일을 입력하여 주세요. <br />
         비밀번호를 변경할 수 있는 링크가 전송됩니다.
       </div>
-      <form @submit.prevent="loginProcess">
+      <form @submit.prevent="sendMail">
         <label class="label">
           <span>Email</span>
           <input
             class="input"
             type="email"
             placeholder="example@gmail.com"
+            v-model="send_email"
             required
           />
         </label>
@@ -37,6 +38,8 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import axios from "../../axios/axiossetting";
 export default {
   emits: ["close-pssword-popup"],
   setup(props, context) {
@@ -44,8 +47,24 @@ export default {
       context.emit("close-pssword-popup");
     };
 
+    const send_email = ref("");
+
+    const sendMail = async () => {
+      try {
+        const res = await axios.post("api/members/send_pass_mail", send_email);
+        if (res.data) {
+          window.alert("링크를 전송하였습니다. 이메일을 확인하여 주세요.");
+          closePopup();
+        }
+      } catch (err) {
+        console.log(send_email);
+      }
+    };
+
     return {
       closePopup,
+      send_email,
+      sendMail,
     };
   },
 };

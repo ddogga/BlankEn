@@ -6,6 +6,7 @@ import SetWrite from "../views/board/BoardWrite_Set.vue";
 import MyPage from "../views/member/MyPage.vue";
 import Play from "../views/board/BoardPlay.vue";
 import Redirect from "../views/member/Redirect.vue";
+import UpdatePass from "../views/member/UpdatePass.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -49,6 +50,11 @@ const router = createRouter({
       path: "/blanken/play",
       name: "Play",
       component: Play,
+    },
+    {
+      path: "/blanken/update_pass",
+      name: "UpdatePass",
+      component: UpdatePass,
     },
   ],
 });
