@@ -48,7 +48,8 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const token = route.query.token;
+    const email = route.query.email;
+    const uuid = route.query.uuid;
 
     const new_password = ref("");
     const re_password = ref("");
@@ -57,6 +58,7 @@ export default {
     const passwordMatchedFlag = ref(true);
 
     const validatePassword = () => {
+      console.log(new_password.value);
       //대문자, 소문자, 숫자가 1개 이상 존재, 8~16자 이하
       if (
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(new_password.value)
@@ -79,9 +81,11 @@ export default {
       }
 
       try {
-        const res = await axios.post(
-          "api/members/change_password",
-          new_password.value
+        const res = await axios.put(
+          `api/members/new_password?email=${email}&uuid=${uuid}`,
+          {
+            password: new_password.value,
+          }
         );
         if (res.data) {
           window.alert("비밀번호가 변경되었습니다.");

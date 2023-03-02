@@ -25,7 +25,7 @@
             class="input"
             type="email"
             placeholder="example@gmail.com"
-            v-model="send_email"
+            v-model="email_form.email"
             required
           />
         </label>
@@ -39,31 +39,39 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import axios from "../../axios/axiossetting";
 export default {
   emits: ["close-pssword-popup"],
   setup(props, context) {
+    const route = useRoute();
+
     const closePopup = () => {
       context.emit("close-pssword-popup");
     };
 
-    const send_email = ref("");
+    const email_form = ref({
+      email: "",
+    });
 
     const sendMail = async () => {
       try {
-        const res = await axios.post("api/members/send_pass_mail", send_email);
+        const res = await axios.post(
+          "api/members/send_pass_mail",
+          email_form.value
+        );
         if (res.data) {
           window.alert("링크를 전송하였습니다. 이메일을 확인하여 주세요.");
           closePopup();
         }
       } catch (err) {
-        console.log(send_email);
+        console.log(err);
       }
     };
 
     return {
       closePopup,
-      send_email,
+      email_form,
       sendMail,
     };
   },

@@ -164,7 +164,9 @@ export default {
       try {
         const res = await axios.post("api/members/login", login.value);
         console.log("token", res.data);
-        if (res.data) {
+        if (res.data == "비밀번호가 일치하지 않습니다.") {
+          alert(res.data);
+        } else if (res.data) {
           store.dispatch("set_token", res.data);
           sessionStorage.setItem("accessToken", res.data);
           window.alert("로그인하였습니다.");
