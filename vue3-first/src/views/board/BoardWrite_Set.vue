@@ -4,15 +4,15 @@
 
     <form class="contact-form row">
       <label for="profile">
-        <span v-if="preview == ''">
+        <span v-if="quizSet.titleImg == ''">
           <img
             class="profile_img"
             src="../../assets/images/upload_image.jpg"
             alt="profile"
           />
         </span>
-        <span v-if="preview != ''">
-          <img class="profile_img" :src="preview" />
+        <span v-if="quizSet.titleImg != ''">
+          <img class="profile_img" :src="quizSet.titleImg" />
         </span>
 
         <input
@@ -34,12 +34,24 @@
       </div>
 
       <div class="form-field col-lg-12">
-        <input id="message" class="input-text js-input" type="text" required />
+        <input
+          id="message"
+          v-modle="quizSet.title"
+          class="input-text js-input"
+          type="text"
+          required
+        />
         <label class="label" for="message">제목</label>
       </div>
 
       <div class="form-field col-lg-12">
-        <input id="message" class="input-text js-input" type="text" required />
+        <input
+          id="message"
+          v-model="quizSet.contents"
+          class="input-text js-input"
+          type="text"
+          required
+        />
         <label class="label" for="message">설명</label>
       </div>
 
@@ -62,7 +74,26 @@
           </nav>
 
           <div class="card-img-top">
-            <div></div>
+            <label for="card_img">
+              <span v-if="card.img == ''">
+                <img
+                  class="card_img"
+                  src="../../assets/images/upload_image.jpg"
+                  alt="profile"
+                />
+              </span>
+              <span v-if="card.img != ''">
+                <img class="card_img" :src="card.img" />
+              </span>
+
+              <input
+                type="file"
+                style="display: none"
+                id="card_img"
+                @change="onFileChanged(index, $event)"
+                accept="image/*"
+              />
+            </label>
           </div>
           <!-- input -->
           <div class="card-body">
@@ -168,12 +199,17 @@ export default {
     DropDown,
   },
   setup() {
-    const preview = ref("");
+    const quizSet = ref({
+      titleImg: "",
+      title: "",
+      contents: "",
+    });
 
     let cards = ref([
       {
+        img: "",
         first: "",
-        black: "",
+        blank: "",
         last: "",
         meaning: "",
       },
@@ -189,6 +225,7 @@ export default {
 
     const addNewCard = (e) => {
       cards.value.push({
+        img: "",
         first: "",
         black: "",
         last: "",
@@ -196,13 +233,28 @@ export default {
       });
     };
 
+    //퀴즈세트 타이틀 이미지 미리보기
     const onFileSelected = (event) => {
       var input = event.target;
       console.log(input.files);
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = (e) => {
-          preview.value = e.target.result;
+          quizSet.value.titleImg = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    };
+
+    //퀴즈 카드의 이미지 미리보기
+    const onFileChanged = (index, event) => {
+      console.log(cards.value[index]);
+      var input = event.target;
+      console.log(input.files);
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          cards.value[index].img = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
       }
@@ -239,11 +291,12 @@ export default {
     };
 
     return {
-      preview,
       cards,
+      quizSet,
       show,
       hide,
       onFileSelected,
+      onFileChanged,
       deleteInput,
       addInput,
       deleteCard,
@@ -291,6 +344,12 @@ export default {
 .profile_img {
   width: 300px;
   height: 300px;
+  cursor: pointer;
+}
+
+.card_img {
+  width: 200px;
+  height: 200px;
   cursor: pointer;
 }
 
