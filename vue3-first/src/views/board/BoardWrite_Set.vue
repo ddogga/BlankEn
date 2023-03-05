@@ -2,7 +2,7 @@
   <section class="get-in-touch">
     <h1 class="title">Make QuizSet</h1>
 
-    <form class="contact-form row">
+    <form class="contact-form row" @submit.prevent="addQuizSet">
       <label for="profile">
         <span v-if="quizSet.titleImg == ''">
           <img
@@ -24,19 +24,10 @@
         />
       </label>
 
-      <div class="form-field col-lg-6">
-        <input id="name" class="input-text js-input" type="text" required />
-        <label class="label" for="name">Name</label>
-      </div>
-      <div class="form-field col-lg-6">
-        <input id="email" class="input-text js-input" type="email" required />
-        <label class="label" for="email">E-mail</label>
-      </div>
-
       <div class="form-field col-lg-12">
         <input
           id="message"
-          v-modle="quizSet.title"
+          v-model="quizSet.title"
           class="input-text js-input"
           type="text"
           required
@@ -191,6 +182,7 @@
 </template>
 
 <script>
+import axios from "../../axios/axiossetting";
 import { ref } from "vue";
 
 import DropDown from "../../components/board/SearchingDropDown.vue";
@@ -198,7 +190,13 @@ export default {
   components: {
     DropDown,
   },
-  setup() {
+  props: {
+    parent_email: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props, context) {
     const quizSet = ref({
       titleImg: "",
       title: "",
@@ -248,7 +246,6 @@ export default {
 
     //퀴즈 카드의 이미지 미리보기
     const onFileChanged = (index, event) => {
-      console.log(cards.value[index]);
       var input = event.target;
       console.log(input.files);
       if (input.files && input.files[0]) {
@@ -290,6 +287,30 @@ export default {
       e.currentTarget.children[1].className = "hidden";
     };
 
+    const addQuizSet = async () => {
+      const form = makeForm();
+      try {
+        const res = await axios.post("api/quiz/new_quiz_set", form, {
+          headers: { "Context-Type": "multipart/form-data;charset=UTF-8" },
+        });
+        console.log(res.data);
+      } catch (err) {
+        console.log("오류");
+        console.log(err);
+      }
+    };
+
+    const makeForm = () => {
+      let form = new FormData();
+      form.append("titleImg", quizSet.value.titleImg);
+      form.append("title", quizSet.value.title);
+      form.append("contents", quizSet.value.contents);
+      form.append("email", props.parent_email);
+      form.append("quizList", cards.value);
+
+      return form;
+    };
+
     return {
       cards,
       quizSet,
@@ -301,6 +322,7 @@ export default {
       addInput,
       deleteCard,
       addNewCard,
+      addQuizSet,
     };
   },
 };

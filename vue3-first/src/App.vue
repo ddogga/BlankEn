@@ -2,7 +2,11 @@
   <div>
     <Nav :parent_id="id" />
     <div class="container">
-      <router-view @parent_getSession="getSession" :parent_id="id" />
+      <router-view
+        @parent_getSession="getSession"
+        :parent_id="id"
+        :parent_email="email"
+      />
     </div>
     <Footer />
   </div>
@@ -27,6 +31,7 @@ export default {
   },
   setup() {
     const id = ref("");
+    const email = ref("");
 
     const router = useRouter();
     const store = useStore();
@@ -51,6 +56,7 @@ export default {
           } else {
             id.value = res.data.email;
           }
+          email.value = res.data.email;
 
           console.log("getSession : " + id.value);
         } catch (err) {
@@ -61,6 +67,7 @@ export default {
 
     return {
       id,
+      email,
       getSession,
     };
   },
