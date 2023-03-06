@@ -4,15 +4,15 @@
 
     <form class="contact-form row" @submit.prevent="addQuizSet">
       <label for="profile">
-        <span v-if="quizSet.titleImg == ''">
+        <span v-if="titleImgPreview == ''">
           <img
             class="profile_img"
             src="../../assets/images/upload_image.jpg"
             alt="profile"
           />
         </span>
-        <span v-if="quizSet.titleImg != ''">
-          <img class="profile_img" :src="quizSet.titleImg" />
+        <span v-if="titleImgPreview != ''">
+          <img class="profile_img" :src="titleImgPreview" />
         </span>
 
         <input
@@ -66,15 +66,15 @@
 
           <div class="card-img-top">
             <label for="card_img">
-              <span v-if="card.img == ''">
+              <span v-if="card.quizImgName == ''">
                 <img
                   class="card_img"
                   src="../../assets/images/upload_image.jpg"
                   alt="profile"
                 />
               </span>
-              <span v-if="card.img != ''">
-                <img class="card_img" :src="card.img" />
+              <span v-if="card.quizImgName != ''">
+                <img class="card_img" :src="card.quizImgName" />
               </span>
 
               <input
@@ -95,7 +95,7 @@
                 @mouseout="hide"
               >
                 <input
-                  v-model="card.first"
+                  v-model="card.firstSentence"
                   class="input-text js-input"
                   placeholder="first "
                   required
@@ -133,7 +133,7 @@
                 @mouseout="hide"
               >
                 <input
-                  v-model="card.last"
+                  v-model="card.lastSentence"
                   class="input-text js-input"
                   placeholder="last"
                   required
@@ -159,7 +159,7 @@
             <div class="korean-input">
               <div class="card-input form-field">
                 <input
-                  v-model="card.meaning"
+                  v-model="card.expression"
                   class="input-text js-input"
                   placeholder="한국어 의미"
                   required
@@ -197,6 +197,7 @@ export default {
     },
   },
   setup(props, context) {
+    let titleImgPreview = ref("");
     const quizSet = ref({
       titleImg: "",
       title: "",
@@ -205,11 +206,13 @@ export default {
 
     let cards = ref([
       {
-        img: "",
-        first: "",
+        quizImgName: "",
+        quizImg: "",
+        firstSentence: "",
         blank: "",
-        last: "",
-        meaning: "",
+        lastSentence: "",
+        meanexpressioning: "",
+        num: "",
       },
     ]);
 
@@ -223,11 +226,13 @@ export default {
 
     const addNewCard = (e) => {
       cards.value.push({
-        img: "",
-        first: "",
-        black: "",
-        last: "",
-        meaning: "",
+        quizImgName: "",
+        quizImg: "",
+        firstSentence: "",
+        blank: "",
+        lastSentence: "",
+        meanexpressioning: "",
+        num: "",
       });
     };
 
@@ -236,9 +241,10 @@ export default {
       var input = event.target;
       console.log(input.files);
       if (input.files && input.files[0]) {
+        quizSet.value.titleImg = input.files[0];
         var reader = new FileReader();
         reader.onload = (e) => {
-          quizSet.value.titleImg = e.target.result;
+          titleImgPreview.value = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
       }
@@ -247,11 +253,12 @@ export default {
     //퀴즈 카드의 이미지 미리보기
     const onFileChanged = (index, event) => {
       var input = event.target;
-      console.log(input.files);
+      console.log(input.files[0]);
       if (input.files && input.files[0]) {
+        cards.value[index].quizImg = input.files[0];
         var reader = new FileReader();
         reader.onload = (e) => {
-          cards.value[index].img = e.target.result;
+          cards.value[index].quizImgName = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
       }
@@ -288,7 +295,9 @@ export default {
     };
 
     const addQuizSet = async () => {
+      console.log(props.parent_email);
       const form = makeForm();
+
       try {
         const res = await axios.post("api/quiz/new_quiz_set", form, {
           headers: { "Context-Type": "multipart/form-data;charset=UTF-8" },
@@ -306,12 +315,31 @@ export default {
       form.append("title", quizSet.value.title);
       form.append("contents", quizSet.value.contents);
       form.append("email", props.parent_email);
-      form.append("quizList", cards.value);
+
+      for (let i = 0; i < cards.value.length; i++) {
+        console.log(cards.value[i].quizImg);
+        form.append("quizList[" + i + "].quizImg", cards.value[i].quizImg);
+        form.append(
+          "quizList[" + i + "].firstSentence",
+          cards.value[i].firstSentence
+        );
+        form.append("quizList[" + i + "].blank", cards.value[i].blank);
+        form.append(
+          "quizList[" + i + "].lastSentence",
+          cards.value[i].lastSentence
+        );
+        form.append(
+          "quizList[" + i + "].expression",
+          cards.value[i].expression
+        );
+        form.append("quizList[" + i + "].num", i);
+      }
 
       return form;
     };
 
     return {
+      titleImgPreview,
       cards,
       quizSet,
       show,
