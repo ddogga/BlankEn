@@ -46,7 +46,32 @@
         <label class="label" for="message">설명</label>
       </div>
 
-      <DropDown />
+      <!-- 카테고리 선택 -->
+      <div class="form-field col-lg-4">
+        <span>카테고리 선택</span>
+      </div>
+      <div class="form-field col-lg-8">
+        <div class="nav-item dropdown">
+          <a
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >{{ selectedValue }}</a
+          >
+          <ul class="dropdown-menu">
+            <li v-for="(category, index) in categorys" :key="index">
+              <a
+                class="dropdown-item"
+                @click="selectState(category)"
+                href="#!"
+                >{{ category }}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <!-- card - list-->
 
@@ -185,11 +210,7 @@
 import axios from "../../axios/axiossetting";
 import { ref } from "vue";
 
-import DropDown from "../../components/board/SearchingDropDown.vue";
 export default {
-  components: {
-    DropDown,
-  },
   props: {
     parent_email: {
       type: String,
@@ -197,6 +218,21 @@ export default {
     },
   },
   setup(props, context) {
+    const selectedValue = ref("드라마");
+
+    const selectState = (value) => {
+      selectedValue.value = value;
+    };
+
+    const categorys = [
+      "드라마",
+      "여행",
+      "일상회화",
+      "비즈니스",
+      "오픽,토스",
+      "기타",
+    ];
+
     let titleImgPreview = ref("");
     const quizSet = ref({
       titleImg: "",
@@ -315,6 +351,7 @@ export default {
       form.append("title", quizSet.value.title);
       form.append("contents", quizSet.value.contents);
       form.append("email", props.parent_email);
+      form.append("category", selectedValue.value);
 
       for (let i = 0; i < cards.value.length; i++) {
         console.log(cards.value[i].quizImg);
@@ -342,6 +379,8 @@ export default {
       titleImgPreview,
       cards,
       quizSet,
+      selectedValue,
+      categorys,
       show,
       hide,
       onFileSelected,
@@ -351,6 +390,7 @@ export default {
       deleteCard,
       addNewCard,
       addQuizSet,
+      selectState,
     };
   },
 };
