@@ -17,23 +17,16 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >{{ sortValue }}</a
+                >{{ sortValue.label }}</a
               >
+
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
+                <li v-for="(item, index) in sort_option" :key="index">
                   <a
                     class="dropdown-item"
-                    @click="sortState('추천순')"
+                    @click="sortState(item.value, item.label)"
                     href="#!"
-                    >추천순</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    @click="sortState('최신순')"
-                    href="#!"
-                    >최신순</a
+                    >{{ item.label }}</a
                   >
                 </li>
               </ul>
@@ -182,7 +175,8 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useStore } from "vuex";
 
 import Pagination from "../../components/board/Pagination.vue";
 import DropDown from "../../components/board/SearchingDropDown.vue";
@@ -195,18 +189,74 @@ export default {
   },
 
   setup() {
-    const sortValue = ref("최신순");
-    const popupView = ref(false);
+    const store = useStore();
 
-    const sortState = (value) => {
-      sortValue.value = value;
+    // 퀴즈 불러오기
+
+    const list = ref([]);
+    const size = 10;
+    const listcount = ref(0);
+    const startnum = ref(0);
+    let currentpage = 1;
+    let maxpage = 1;
+
+    const getList = async (page) => {
+      try {
+        const res = await axios.get(
+          `quizs?page=${page}&size=${size}&sort=${sortValue.value.value}`
+        );
+        console.log("quizList=" + res.data);
+
+        list.value = res.data.quizs;
+        listcount.value = res.data.listcount;
+        maxpage = res.data.maxpage;
+        currentpage = res.data.page;
+        startnum.value = listcount.value - (currentpage - 1) * size;
+        // const pagelist=ref([]);
+        // for(let i=res.data.startpage; i<=res.data.endpage;i++){
+        //   pagelist.value.push(i);
+        // }
+        // const obj = {maxpage, currentpage,pagelist};
+        // store.dispatch('store_obj', obj);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
+    // 페이지네이션에서 번호 클릭시 store의 page값이 변경되는 것을 감지
+    watch(
+      () => store.state.page,
+      () => {
+        getList(store.state.page);
+      }
+    );
+
+    // 정렬
+    let sort_option = ref([]);
+    sort_option.value = [
+      { value: "createdDate", label: "최신순" },
+      { value: "goodNums", label: "인기순" },
+    ];
+
+    const sortValue = ref({ value: "createdDate", label: "최신순" });
+
+    const sortState = (value, label) => {
+      sortValue.value.value = value;
+      sortValue.value.label = label;
+      console.log(sortValue.value);
+    };
+
+    // 문장 목록
+    const popupView = ref(false);
     const openPopup = () => {
       popupView.value = popupView.value ? false : true;
     };
 
     return {
+      list,
+      listcount,
+      startnum,
+      sort_option,
       sortValue,
       sortState,
       popupView,

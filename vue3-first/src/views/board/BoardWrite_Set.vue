@@ -46,30 +46,47 @@
         <label class="label" for="message">설명</label>
       </div>
 
-      <!-- 카테고리 선택 -->
-      <div class="form-field col-lg-4">
-        <span>카테고리 선택</span>
-      </div>
-      <div class="form-field col-lg-8">
-        <div class="nav-item dropdown">
-          <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            >{{ selectedValue }}</a
-          >
-          <ul class="dropdown-menu">
-            <li v-for="(category, index) in categorys" :key="index">
-              <a
-                class="dropdown-item"
-                @click="selectState(category)"
-                href="#!"
-                >{{ category }}</a
-              >
-            </li>
-          </ul>
+      <div class="row">
+        <!-- 카테고리 선택 -->
+        <div class="form-field col-lg-2">
+          <span>카테고리 선택 : </span>
+        </div>
+        <div class="form-field col-lg-4">
+          <div class="nav-item dropdown">
+            <a
+              class="dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ selectedValue }}</a
+            >
+            <ul class="dropdown-menu">
+              <li v-for="(category, index) in categorys" :key="index">
+                <a
+                  class="dropdown-item"
+                  @click="selectState(category)"
+                  href="#!"
+                  >{{ category }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 비공개/공개 선택 -->
+        <div class="form-field col-lg-2">
+          <span>{{ share }}</span>
+        </div>
+        <div class="form-field col-lg-4">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+              v-model="switchValue"
+            />
+          </div>
         </div>
       </div>
 
@@ -208,7 +225,8 @@
 
 <script>
 import axios from "../../axios/axiossetting";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   props: {
@@ -218,6 +236,11 @@ export default {
     },
   },
   setup(props, context) {
+    const router = useRouter();
+
+    const share = ref("비공개");
+    const switchValue = ref(false);
+
     const selectedValue = ref("드라마");
 
     const selectState = (value) => {
@@ -251,6 +274,17 @@ export default {
         num: "",
       },
     ]);
+
+    watch(
+      () => switchValue.value,
+      (next, prev) => {
+        if (switchValue.value) {
+          share.value = "공개";
+        } else {
+          share.value = "비공개";
+        }
+      }
+    );
 
     const deleteCard = (index) => {
       if (cards.value.length <= 1) {
@@ -338,7 +372,10 @@ export default {
         const res = await axios.post("api/quiz/new_quiz_set", form, {
           headers: { "Context-Type": "multipart/form-data;charset=UTF-8" },
         });
-        console.log(res.data);
+        alert(res.data);
+        router.push({
+          name: "BoardList",
+        });
       } catch (err) {
         console.log("오류");
         console.log(err);
@@ -352,6 +389,7 @@ export default {
       form.append("contents", quizSet.value.contents);
       form.append("email", props.parent_email);
       form.append("category", selectedValue.value);
+      form.append("shared", switchValue.value);
 
       for (let i = 0; i < cards.value.length; i++) {
         console.log(cards.value[i].quizImg);
@@ -376,6 +414,8 @@ export default {
     };
 
     return {
+      share,
+      switchValue,
       titleImgPreview,
       cards,
       quizSet,
